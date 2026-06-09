@@ -1,0 +1,39 @@
+galaxy,sample_type,n_sample,table1_ref_ids,table1_references_cited,data_source_policy,status
+Antlia 2,diffuse,283,1;9,Torrealba et al. 2019; Ji et al. 2021,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Bootes I,UFD,66,2;3;4,Munoz et al. 2018; Jenkins et al. 2021; Dall'Ora et al. 2006,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Canes Venatici I,UFD,214,2;5;6,Munoz et al. 2018; Kirby et al. 2013b; Kuehn et al. 2008,Use Hayashi Table 1 ref5 (Kirby et al. 2013b) as primary; star-level kinematics traced to Simon & Geha 2007 jsimon machine table as upstream data.,table1-ref5-upstream-jsimon-documented
+Canes Venatici II,UFD,25,2;5;7,Munoz et al. 2018; Kirby et al. 2013b; Greco et al. 2008,Use Hayashi Table 1 ref5 (Kirby et al. 2013b) as primary; star-level kinematics traced to Simon & Geha 2007 jsimon machine table as upstream data.,table1-ref5-upstream-jsimon-documented
+Coma Berenices,UFD,59,2;5;8,Munoz et al. 2018; Kirby et al. 2013b; Belokurov et al. 2007,Use Hayashi Table 1 ref5 (Kirby et al. 2013b) as primary; star-level kinematics traced to Simon & Geha 2007 jsimon machine table as upstream data.,table1-ref5-upstream-jsimon-documented
+Crater 2,diffuse,141,9;10,Ji et al. 2021; Torrealba et al. 2016,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Draco 2,UFD,9,11;12,Laevens et al. 2015a; Longeard et al. 2018,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Eridanus II,UFD,92,2;13;14,Munoz et al. 2018; Zoutendijk et al. 2021; Li et al. 2017,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Grus 1,UFD,8,2;15,Munoz et al. 2018; Chiti et al. 2022,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Grus 2,UFD,19,16;17;18,Drlica-Wagner et al. 2015; Martinez-Vazquez et al. 2019; Simon et al. 2020,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Hercules,UFD,18,2;5;19,Munoz et al. 2018; Kirby et al. 2013b; Martin et al. 2008,Use Hayashi Table 1 ref5 (Kirby et al. 2013b) as primary; star-level kinematics traced to Simon & Geha 2007 jsimon machine table as upstream data.,table1-ref5-upstream-jsimon-documented
+Horologium I,UFD,5,2;20,Munoz et al. 2018; Koposov et al. 2015b,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Hydra II,UFD,13,2;21;22,Munoz et al. 2018; Kirby et al. 2015; Martin et al. 2015,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Leo IV,UFD,18,2;3;23,Munoz et al. 2018; Jenkins et al. 2021; de Jong et al. 2010,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Leo V,UFD,7,2;3;23,Munoz et al. 2018; Jenkins et al. 2021; de Jong et al. 2010,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Leo T,UFD,19,2;5;24,Munoz et al. 2018; Kirby et al. 2013b; de Jong et al. 2008,Use Hayashi Table 1 ref5 (Kirby et al. 2013b) as primary; star-level kinematics traced to Simon & Geha 2007 jsimon machine table as upstream data.,table1-ref5-upstream-jsimon-documented
+Pisces II,UFD,7,2;21;25,Munoz et al. 2018; Kirby et al. 2015; Belokurov et al. 2010,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Reticulum II,UFD,25,2;20;26,Munoz et al. 2018; Koposov et al. 2015b; Koposov et al. 2015a,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Segue 1,UFD,71,2;19;27,Munoz et al. 2018; Martin et al. 2008; Simon et al. 2011,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Segue 2,UFD,26,2;28;29,Munoz et al. 2018; Belokurov et al. 2009; Kirby et al. 2013a,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Triangulum II,UFD,13,2;30;31,Munoz et al. 2018; Laevens et al. 2015b; Kirby et al. 2017,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Tucana 2,UFD,19,26;35,Koposov et al. 2015a; Chiti et al. 2023,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Tucana 3,UFD,26,16;32,Drlica-Wagner et al. 2015; Simon et al. 2017,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Tucana 4,UFD,11,16;18,Drlica-Wagner et al. 2015; Simon et al. 2020,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Ursa Major I,UFD,39,2;5;33,Munoz et al. 2018; Kirby et al. 2013b; Simon and Geha 2007,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Ursa Major II,UFD,20,2;5;33,Munoz et al. 2018; Kirby et al. 2013b; Simon and Geha 2007,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+Willman 1,UFD,40,2;34,Munoz et al. 2018; Willman et al. 2011,Use exactly the references listed in Table 1 for this galaxy,table1-strict
+
+# COLUMN_NOTES_BEGIN
+# 说明：以下注释行解释本 CSV 中每一列的含义；程序读取时建议使用 pd.read_csv(path, comment="#")。
+# galaxy: 目标星系名称。
+# sample_type: Hayashi et al. 2023 中的样本类型，例如 UFD 或 diffuse。
+# n_sample: Hayashi et al. 2023 Table 1 给出的成员星数量。
+# table1_ref_ids: Hayashi Table 1 中列出的参考文献编号，分号分隔。
+# table1_references_cited: Hayashi Table 1 对应参考文献的简写列表。
+# data_source_policy: 本项目对该星系数据源选择的规则。
+# status: 记录或审计状态。
+# COLUMN_NOTES_END

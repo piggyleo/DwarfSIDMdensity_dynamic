@@ -1,0 +1,46 @@
+ref_id,citation_short,journal,volume,page,role_hint
+1,"Torrealba et al. 2019","MNRAS","488","2743","discovery/photometry/structure"
+2,"Munoz et al. 2018","ApJ","860","66","compiled structural parameters and distances"
+3,"Jenkins et al. 2021","ApJ","920","92","spectroscopy/kinematics"
+4,"Dall'Ora et al. 2006","ApJL","653","L109","distance from variable stars / RR Lyrae"
+5,"Kirby et al. 2013b","ApJ","779","102","mean metallicity compilation"
+6,"Kuehn et al. 2008","ApJL","674","L81","distance from variable stars / RR Lyrae"
+7,"Greco et al. 2008","ApJL","675","L73","distance from variable stars / RR Lyrae"
+8,"Belokurov et al. 2007","ApJ","654","897","discovery/photometry"
+9,"Ji et al. 2021","ApJ","921","32","spectroscopy/kinematics"
+10,"Torrealba et al. 2016","MNRAS","459","2370","discovery/photometry/structure"
+11,"Laevens et al. 2015a","ApJ","813","44","discovery/photometry"
+12,"Longeard et al. 2018","MNRAS","480","2609","spectroscopy/kinematics/metallicity"
+13,"Zoutendijk et al. 2021","A&A","651","A80","spectroscopy/dynamical modeling"
+14,"Li et al. 2017","ApJ","838","8","discovery/follow-up spectroscopy"
+15,"Chiti et al. 2022","ApJ","939","41","spectroscopy/kinematics/metallicity"
+16,"Drlica-Wagner et al. 2015","ApJ","813","109","discovery/photometry"
+17,"Martinez-Vazquez et al. 2019","MNRAS","490","2183","distance from variable stars / RR Lyrae"
+18,"Simon et al. 2020","ApJ","892","137","spectroscopy/kinematics/metallicity"
+19,"Martin et al. 2008","ApJ","684","1075","discovery/photometry/structure"
+20,"Koposov et al. 2015b","ApJ","811","62","spectroscopy/kinematics/metallicity"
+21,"Kirby et al. 2015","ApJ","810","56","spectroscopy/kinematics/metallicity"
+22,"Martin et al. 2015","ApJL","804","L5","discovery/photometry"
+23,"de Jong et al. 2010","ApJ","710","1664","photometry/structure/distance"
+24,"de Jong et al. 2008","ApJ","680","1112","photometry/structure/distance"
+25,"Belokurov et al. 2010","ApJL","712","L103","discovery/photometry"
+26,"Koposov et al. 2015a","ApJ","805","130","discovery/photometry"
+27,"Simon et al. 2011","ApJ","733","46","spectroscopy/kinematics/metallicity"
+28,"Belokurov et al. 2009","MNRAS","397","1748","discovery/photometry"
+29,"Kirby et al. 2013a","ApJ","770","16","spectroscopy/kinematics/metallicity"
+30,"Laevens et al. 2015b","ApJL","802","L18","discovery/photometry"
+31,"Kirby et al. 2017","ApJ","838","83","spectroscopy/kinematics/metallicity"
+32,"Simon et al. 2017","ApJ","838","11","spectroscopy/kinematics/metallicity"
+33,"Simon and Geha 2007","ApJ","670","313","spectroscopy/kinematics/metallicity"
+34,"Willman et al. 2011","AJ","142","128","spectroscopy/kinematics/metallicity"
+35,"Chiti et al. 2023","AJ","165","55","spectroscopy/kinematics/metallicity"
+
+# COLUMN_NOTES_BEGIN
+# 说明：以下注释行解释本 CSV 中每一列的含义；程序读取时建议使用 pd.read_csv(path, comment="#")。
+# ref_id: Hayashi 参考文献编号。
+# citation_short: 参考文献简写。
+# journal: 期刊名称。
+# volume: 期刊卷号。
+# page: 文章起始页或编号。
+# role_hint: 该参考文献在本项目中的主要用途提示。
+# COLUMN_NOTES_END

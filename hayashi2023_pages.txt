@@ -1,0 +1,2091 @@
+
+===== PAGE 1 =====
+Dark Matter Halo Properties of the Galactic Dwarf Satellites: Implication for Chemo-
+dynamical Evolution of the Satellites and a Challenge to Lambda Cold Dark Matter
+Kohei Hayashi 1,2,3 , Yutaka Hirai 2,4,5,7 , Masashi Chiba 2 , and Tomoaki Ishiyama 6
+1 National Institute of Technology, Sendai College 48 Nodayama, Medeshima-Shiote, Natori, Miyagi 981-1239, Japan; khayashi@sendai-nct.ac.jp
+2 Astronomical Institute, Tohoku University, 6-3 Aoba, Aramaki, Aoba-ku, Sendai, Miyagi 980-8578, Japan
+3 Institute for Cosmic Ray Research, The University of Tokyo, Chiba 277-8582, Japan
+4 Department of Physics and Astronomy, University of Notre Dame, 225 Nieuwland Science Hall, Notre Dame, IN 46556, USA
+5 Joint Institute for Nuclear Astrophysics, Center for the Evolution of the Elements (JINA-CEE), East Lansing, MI 48824, USA
+6 Digital Transformation Enhancement Council, Chiba University, 1-33, Yayoi-cho, Inage-ku, Chiba 263-8522, Japan
+Received 2022 June 6; revised 2023 June 25; accepted 2023 June 29; published 2023 August 17
+Abstract
+Elucidating dark matter density pro ﬁles in Galactic dwarf satellites is essential to understanding not only the
+quintessence of dark matter, but also the evolution of the satellites themselves. In this work, we present the current
+constraints on dark matter densities in Galactic ultrafaint dwarf (UFD) and diffuse galaxies. Applying our
+constructed nonspherical mass models to the currently available kinematic data of the 25 UFDs and two diffuse
+satellites, we ﬁnd that whereas most of the galaxies have huge uncertainties on the inferred dark matter density
+proﬁles, Eridanus II, Segue I, and Willman 1 favor cuspy central pro ﬁles even when considering effects of a prior
+bias. We compare our results with the simulated subhalos on the plane between the dark matter density at 150 pc and
+the pericenter distance. We ﬁnd that the most observed satellites and the simulated subhalos are similarly distributed
+on this plane, except for Antlia 2, Crater 2, and Tucana 3, which are less than one-tenth of the density. Despite
+considerable tidal effects, the subhalos detected by commonly used subhalo ﬁnders have difﬁculty explaining such a
+huge deviation. We also estimate the dynamical mass-to-light ratios of the satellites and con ﬁrm the ratio is linked to
+stellar mass and metallicity. Tucana 3 deviates largely from these relations, while it follows the mass –metallicity
+relation. This indicates that Tucana 3 has a cored dark matter halo, despite a signi ﬁcant uncertainty in its ratios.
+Uniﬁed Astronomy Thesaurus concepts: Dark matter (353); Galaxy kinematics (602); Dwarf spheroidal galaxies
+(420); Galaxy dynamics (591); Galaxy structure (622); Local Group (929); Dark matter density (354)
+1. Introduction
+Dwarf spheroidal (dSph) galaxies associated with the Milky
+Way are valuable laboratories to shed light on the nature of
+dark matter because these galaxies are dark matter-dominated
+stellar systems, reaching dynamical mass-to-light ratios of up to
+∼10
+3 (e.g., McConnachie 2012; Simon 2019). Since the dSphs
+are suf ﬁciently nearby to resolve individual stars around the
+galaxies, it is possible to measure an accurate line-of-sight
+velocity and chemical composition for each star with higher-
+resolution spectroscopy (e.g., Simon & Geha 2007; Walker
+et al. 2009). Therefore, utilizing these spectroscopic data, many
+early studies have estimated their dark matter distributions and
+dynamical masses through dynamical analysis (see Battaglia &
+Nipoti 2022, for a review ).
+Recent dynamical studies for the luminous dSphs, so-called
+classical dSphs, have suggested that although there are still
+large uncertainties stemming from insuf ﬁcient data volume
+and dynamical modelings, these galaxies show a diversity of
+the inner dark matter densities (Kaplinghat et al. 2019; Read
+et al. 2019; Hayashi et al. 2020). Furthermore, this diversity
+could be explained by the Lambda cold dark matter (ΛCDM)
+framework combined with baryonic feedback and star forma-
+tion burst predicted by recent N-body and hydrodynamical
+simulations (e.g., Tollet et al. 2016; Lazar et al. 2020). Thus,
+the core-cusp problem, which is one of the controversial issues
+in ΛCDM models (Bullock & Boylan-Kolchin 2017), can be
+ameliorated by a baryonic feedback mechanism. Meanwhile,
+we should bear in mind that other dark matter candidates are
+still attractive models. For instance, self-interacting dark matter
+(SIDM) models could also reproduce the diversity by
+considering a gravothermal instability induced by tidal
+stripping (e.g., Nishikawa et al. 2020; Correa 2021). Conse-
+quently, from recent observational and computational studies,
+such luminous dSphs could not hold the pristine dark matter
+distributions.
+In the ultrafaint dwarf (UFD) galaxies, which are much
+fainter and less massive than the classical ones, the impact of
+baryonic effects on their central dark matter densities can be
+negligible. Thus, UFDs are promising targets to set constraints
+on dark matter models through the dark matter distributions.
+Although the number of observable individual stars is limited
+because most of their member stars are fainter than the
+magnitude limits of the current spectroscopy, several studies
+have made an attempt to infer their enclosed masses of dark
+matter halos and set a constraint on critical parameters for
+several models (e.g., Errani et al. 2018; Hayashi et al.
+2021a,
+2021b). However, the central dark matter density
+proﬁles in UFDs are still unknown.
+The currently discovered UFDs have been orbiting around
+the Milky Way and thus are thought to have experienced
+tidal stripping and /or disruption. Thanks to the Gaia
+astrometry (Helmi et al. 2018; Brown 2021), the bulk proper
+motions of all UFDs can be determined accurately, and then
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 https://doi.org/10.3847/1538-4357/ace33e
+© 2023. The Author (s). Published by the American Astronomical Society.
+7 JSPS Research Fellow.
+Original content from this work may be used under the terms
+of the Creative Commons Attribution 4.0 licence . Any further
+distribution of this work must maintain attribution to the author (s) and the title
+of the work, journal citation and DOI.
+1
+===== PAGE 2 =====
+their orbits are computed with their known radial
+velocities (McConnachie & Venn 2020; Li et al. 2021;
+Battaglia et al. 2022). For a given model of the gravitational
+potential of the Milky Way, the pericenter distance is generally
+determined within 10% –20% for the satellites within 100 kpc
+from the Sun, thereby offering the opportunity to study the
+evolution of the Galactic satellites (e.g., Genina et al. 2022;
+Miyoshi & Chiba 2020; Di Cintio et al. 2021). From theoretical
+studies, while tidal stripping removal of dark matter in the
+satellites is inevitable, an appreciable fraction of their stars can
+be lost only if they approach the center of the Milky Way very
+closely (Peñarrubia et al. 2008). In fact, several galaxies show
+signs of the tidal effects from morphology, possible velocity
+gradients, and so on (e.g., Frebel & Norris 2015; Simon 2019).
+In terms of tidal effects, Antlia 2 and Crater 2 have drawn
+attention as unusually diffuse satellite galaxies in the Milky
+Way (Torrealba et al. 2016, 2019). More surprisingly, these
+galaxies have exceptionally low-velocity dispersion, even
+though they have large half-light radii (Caldwell et al. 2017;J i
+et al. 2021). A central question is whether such diffuse galaxies
+can be explained by tidal forces in the context of a ΛCDM
+paradigm. Several studies based on simulations indicate that
+ΛCDM models can reproduce the stellar properties of the
+diffuse galaxies with strong tidal stripping, especially if the dark
+matter halo has a cored central density induced by stellar
+feedback and /or the halo has an extremely low
+concentration (e.g., Errani et al. 2015; Rey et al. 2019;T o r r e a l b a
+et al. 2019; Simon et al. 2020;M o r e n oe ta l .2022). Therefore,
+elucidating their central densities affords the key to under-
+standing the formation history of Galactic diffuse galaxies.
+Given the current situations detailed above, in order to
+understand the formation of Galactic satellites, it is essential to
+consider not only stellar properties such as luminosity and
+metallicity but also dynamical ones including dark matter
+distributions. For instance, the mass –metallicity relation, here-
+after, MZR (Kirby et al. 2013b), which is a tight correlation
+between stellar mass and mean stellar metallicity, can provide us
+hints for the formation of the satellites. This relation argues that
+tidal stripping of their stellar components could not be effective
+because this effect reduces the luminosity of a galaxy without
+noticeably changing its metallicity in the absence of strong
+metallicity gradients. On the other hand, a large scatter of
+metallicity at the faint end of this relation surely
+exists (Simon 2019). A possible reason for this scatter is tidal
+stripping, but it is not conclusive because of a lack of knowledge
+of dark matter content and extent in the UFDs. Thus, in order to
+get insight into the roots of this scatter, knowledge of the dark
+matter halo properties of the UFDs should be essential.
+Motivated by the aforementioned standing situation, we
+analyze the currently available kinematics for 25 UFDs and two
+diffuse satellites to estimate dark matter density pro ﬁles and
+dynamical masses through nonspherical dynamical models
+based on axisymmetric Jeans equations constructed by our
+group (Hayashi & Chiba 2012, 2015; Hayashi et al. 2020). The
+main reason why we employ the nonspherical mass models is
+that such models can treat two-dimensional distributions of
+line-of-sight velocity dispersions and thereby mitigating a
+strong degeneracy between dark matter density and stellar
+anisotropy in spherical models (Binney & Mamon 1982).
+This paper is organized as follows. In Section 2, we brie ﬂy
+explain our dynamical models, and then we describe the
+photometric and spectroscopic data for our sample dwarf
+galaxies and our ﬁtting procedure. In Section 3, we present the
+results of the ﬁtting analysis and the estimated dark matter
+density pro ﬁles based on the ﬁtting results. We also show the
+relation between inner dark matter density slope and stellar-to-
+halo mass ratio predicted by recent galaxy simulations. In
+Section 4, using our estimated dark matter halo properties, such
+as the dark matter central densities and dynamical mass-to-light
+ratios, we discuss the tidal evolution of Galactic satellites and
+the implication for a challenge to the ΛCDM paradigm. Finally,
+a summary and conclusion are presented in Section 5.
+2. Models and Data
+In this section, we brie ﬂy introduce our dynamical mass
+models. In this work, to estimate the dark matter density
+proﬁles and dynamical masses in the Galactic satellites, we use
+the same dynamical analysis as Hayashi et al. (2020). Thus,
+further details of this analysis can be found in that article.
+2.1. Nonspherical Mass Models
+Assuming that a galaxy is an axisymmetric and dark matter-
+dominated steady-state system, the stellar motion of such a
+system can be described by the axisymmetric Jeans equations,
+which are taken moments of the steady-state collisionless
+Boltzmann equation (Binney & Tremaine 2008). We assume
+that the cross terms of velocity moments such as
+uuRz vanish
+and the velocity ellipsoid constituted by f( )uuu,,Rz
+222 is aligned
+with the cylindrical coordinate. We also assume that the density
+of tracer stars has the same orientation and symmetry as that of
+a dark halo and that
+b =- uu1z zR
+22 is a constant velocity
+anisotropy parameter introduced by Cappellari (2008). Owing
+to the large mass-to-light ratios of dSphs, we assume the stellar
+mass to be negligible. Under these assumptions, the Jeans
+equations are expressed as
+òn n= ¶F
+¶
+¥
+() ()u Rz z dz1
+, ,1z z
+2 DM
+⎡
+⎣
+⎢
+⎤
+⎦
+⎥bn
+n= - + ¶
+¶ + ¶F
+¶
+f
+() ()uu R u
+R R R
+1
+1 ,2
+z
+z
+z22
+2
+DM
+where ν is the three-dimensional stellar density and ΦDM is the
+dark matter gravitational potential. In principle, these second
+velocity moments are de ﬁned as s=+uu222 , where σ and u
+are dispersion and streaming motions of stars, respectively.
+Since the UFDs are largely dispersion-supported stellar
+systems (e.g., Wheeler et al. 2017), the latter streaming motions
+can be negligible. To compare observed line-of-sight velocity
+dispersions with the models, we project the intrinsic velocity
+dispersions from Equations (1) and (2) into the line-of-sight
+direction followed by previous works (Romanowsky & Kocha-
+nek 1997; Tempel & Tenjes 2006; Hayashi & Chiba 2012).
+For the stellar density pro ﬁle, we adopt the Plummer
+proﬁle (Plummer 1911) generalized to an axisymmetric shape,
+n pµ+ -() ( ) br b34 1 32 2 52
+** * , where =+r Rz q2 22 2
+* and
+b* is a half-light radius along the major axis. q is an intrinsic
+axial ratio of the stellar distribution assumed to be independent
+of position. The surface density pro ﬁle can be derived from ν
+via an Abel transform and the inclination angle, i, i.e., the angle
+between the symmetry axis of the dwarf and the line of sight,
+which is a free parameter. When a galaxy is edge-on (face-on),
+i = 90° (i = 0°), respectively.
+2
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 3 =====
+Meanwhile, to determine the dark matter gravitational
+potential, we assume a generalized Hernquist
+proﬁle (Hernquist 1990; Zhao 1996) but a nonspherical shape,
+⎜⎟ ⎜⎟⎛
+⎝
+⎞
+⎠
+⎡
+⎣⎢
+⎛
+⎝
+⎞
+⎠
+⎤
+⎦⎥rr =+
+ga- -bg
+a
+-
+() ( )Rz r
+b
+r
+b,1 , 3DM 0
+halo halo
+=+ ()rRz Q ,422 2 2
+where ρ0 and bhalo are the scale density and radius,
+respectively; α is the sharpness parameter of the transition
+from the inner slope γ to the outer slope β; and Q is a constant
+axial ratio of a dark matter halo. These (Q, ρ0, bhalo, α , β, γ) are
+the free parameters in our models.
+2.2. Data and Analysis
+In this work, we scrutinize dark matter halos for 25
+UFDs (Boötes I, Canes Venatici I, Canes Venatici II, Coma
+Berenices, Draco 2, Eridanus II, Grus 1, Grus 2, Hercules,
+Horologium I, Hydra II, Leo IV, Leo V, Leo T
+8, Pisces II,
+Reticulum II, Segue 1, Segue 2, Triangulum II, Tucana 2,
+Tucana 3, Tucana 4, Ursa Major I, Ursa Major II, Willman 1 )
+and two diffuse galaxies (Antlia 2 and Crater 2 ) in the Milky
+Way. The basic stellar properties are listed in Table 1.
+The stellar structural parameters (De, b*,a n d ¢q with the
+Plummer proﬁle) of the galaxies are adapted from the articles on
+the original observation. For the stellar kinematics of their
+member stars, we use the currently available data taken from
+each spectroscopic observation article. For the membership
+selections for each galaxy, we also adopt the methods in the
+spectroscopic observation articles. For the in ﬂuence of unre-
+solved binary stars on stellar kinematics, several articles have
+indicated that multi-epoch observations can exclude binary
+candidates from stellar spectroscopic data (e.g., Simon &
+Geha 2007; Kirby et al. 2017; Jenkins et al. 2021). Therefore,
+we suppose that the effect of binaries can be negligible.
+To perform a ﬁtting analysis comparing our mass models
+with the kinematic data of our sample galaxies, we employ the
+likelihood function assuming that the line-of-sight velocity
+distribution of each star is a Gaussian shape and centered on the
+mean velocity of the galaxy 〈u〉:
+9
+⎡
+⎣⎢
+⎤
+⎦⎥å s
+ps-= -á ñ +() () () ( )uu2l n l n 2 , 5
+i
+i
+i
+i
+2
+2
+2
+where ui is the line-of-sight velocity of the ith star in the
+kinematic sample. The mean velocity of the galaxy 〈u〉 is a
+nuisance parameter. The dispersion si
+2 can be written by
+s ds=+iv i i
+2
+,
+2
+los,
+2 , where δv,i is the measurement error of the
+velocity, and s ilos,
+2 is the theoretical line-of-sight velocity
+dispersion at the sky plane position (xi, yi), which is computed
+by model parameters and the Jeans equations.
+Using the likelihood function ,w e ﬁt the eight
+parameters (Q, bhalo, ρ0, βz, α , β, γ, i) based on Bayesian
+statistics. We estimate the posterior distributions of these
+parameters via Markov chain Monte Carlo by the Metropolis –
+Hastings algorithm (Metropolis et al. 1953; Hastings 1970).10
+We adopt ﬂat or log- ﬂat priors over the following ranges:
+0.1  Q  2, 0 log10 [bhalo/pc]  5, -5l o g 10
+[ρ0/(Me/pc−3)]  5, - -1l o g 10 [1 − βz] < 1, 0.5  α  3,
+3  β  10, 0  γ  2, and ¢- ( )qcos 1 <i/deg  90.
+3. Results
+In this section, we present the results from the MCMC ﬁtting
+analysis described above, especially for their dark matter
+density pro ﬁles. Furthermore, using the estimated dark matter
+density proﬁles, we calculate the dynamical mass-to-light ratios
+within their half-light radius and the dark matter densities at
+150 pc.
+3.1. Parameter Estimation
+We sampled the parameter spaces of our nonspherical mass
+models using the parameterizations described above. The best-
+ﬁtting parameters for each galaxy are shown in Table A1 in
+Appendix A, including the 68% con ﬁdence intervals. As a by-
+product of the ﬁtting results, we also show the dynamical mass-
+to-light ratio, Mdyn/L, within half-light radius and the dark
+matter density at 150 pc, ρDM(150 pc), computed from the
+estimated dark matter halo parameters. Moreover, we show the
+Bayes factors, which are the ratio of the mean posterior
+distribution of the mass models with the spherical dark matter
+halo (Q = 1) and with all free parameters (subscript “1”), and
+the ratio of the posterior distribution of the mass models with
+nonspherical dark matter halo
+= ¢( )Qq and with all free
+parameters (subscript “2”). In each model, we keep the stellar
+distributions have an axisymmetric shape, that is, stellar axial
+ratios are not unity. The Bayes factors and Akaike Information
+Criterion show that there is no statistical evidence for the need
+for an additional free parameter for the halo axis ratio Q ,
+compared to either spherical (Q = 1) or equal to that of the
+stars (
+= ¢Q q ) for small sample-sized dSphs.
+From the values of their Bayes factors, it is dif ﬁcult to
+determine which spherical or nonspherical dark matter halo is
+better based on the currently available data.
+Figures B1 and B2 display the posteriors for all parameters
+for Antlia 2, Boötes I, Canes Venatici I, Coma Berenices,
+Crater 2, Eridanus II, Segue 1, and Willman 1 as representative
+satellites, which have the largest samples among our studied
+dwarfs. The results for other satellites are similar to these or are
+wider distributed in each parameter range. The contours in
+these ﬁgures show 68%, 95%, and 97% con ﬁdence intervals.
+The vertical lines in each histogram also depict the median and
+68% conﬁdence upper and lower limits. According to the maps,
+the parameters Q, α , β, and i are widely distributed in these
+8 This galaxy is actually a dwarf irregular galaxy, but we include it in this
+work because this galaxy has drawn attention as an ideal target to set
+constraints on dark matter models, especially for primordial black holes (e.g.,
+Faerman et al. 2013; Lu et al. 2021; Wadekar & Farrar 2021).
+9 In this work, we only consider the dispersion of the line-of-sight velocity
+distribution; hence, we assume that this distribution is a Gaussian. However,
+we should bear in mind that there is still degeneracy between the mass
+distribution and velocity anisotropy under this assumption. To mitigate the
+degeneracy, information about the shape of velocity distribution function (i.e.,
+kurtosis) should be important. Several papers (e.g., Richstone & Tre-
+maine 1984; Łokas 2002; Mamon et al. 2013; Read & Steger 2017) have
+constructed spherical mass models taking into account higher-order moments.
+However, the currently available data is possibly too sparse to break the
+degeneracy because the shape of velocity distribution is sensitive to the data
+volume and quality.
+10 We use our own custom-made code for our analysis. To assess the
+convergence of the Markov Chain Monte Carlo (MCMC) algorithm, we
+employ a visual inspection method, among several available methods. In our
+MCMC analysis, we utilize 20 chains, with each chain containing a sample size
+of 50,000 after discarding the burn-in phase. Speci ﬁcally, we discard 5000
+samples from each chain as burn-in. Consequently, we have a total of 1 million
+samples, excluding the burn-in phase.
+3
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 4 =====
+parameter ranges, due to an insuf ﬁcient number of spectro-
+scopic data. It is con ﬁrmed that bhalo–ρ0 and Q–βz are clearly
+degenerate. These results are already known and have been
+discussed in several articles (e.g., Binney & Tremaine 2008;
+Cappellari 2008; Geringer-Sameth et al. 2015; Hayashi &
+Chiba 2015; Hayashi et al. 2020). The inner slope parameter of
+the dark matter density pro ﬁle γ also shows a wide spread
+within its prior range. Furthermore, the inner slope appears to
+be uncorrelated with the other two DM density pro ﬁle
+parameters α and β; hence, there is no need to ﬁx α and/or
+β. Nonetheless, several UFDs (Eridanus II, Segue 1, and
+Willman 1) favor cuspy dark matter density pro ﬁles. We
+discuss this further in the next section.
+3.2. Dark Matter Density Pro ﬁle
+3.2.1. Pro ﬁle Recovery
+Marginalizing the posteriors of the parameters, we recover
+the dark matter density pro ﬁles of the dwarf galaxies. Figure 1
+shows the inferred dark matter density pro ﬁles of the
+representative galaxies. The solid lines show the median, and
+the shaded region marks the 68% interval. The vertical dashed
+lines are the projected half-light radii of each galaxy.
+First, Segue 1 and Willman 1 favor a sharply cuspy inner
+slope of their dark matter density pro ﬁles (γ ∼ 1.6 for Segue 1
+and ∼1.2 for Willman 1 ), even considering the 95% con ﬁdence
+intervals of the pro ﬁle. Eridanus II also prefers a cuspy dark
+matter density pro ﬁle (γ ∼ 1.2), even though the uncertainty for
+its γ is larger than for Segue 1 and Willman 1. Intriguingly, the
+slope of Segue 1 is much steeper than a Navarro –Frenk–White
+(NFW) cusp (γ = 1) but is roughly consistent with ones
+predicted by the other simulation works (e.g., Fukushige &
+Makino 1997; Moore et al. 1999; Springel et al. 2008; Ishiyama
+& Ando 2020), while those of Eridanus II and Willman 1 are
+consistent with the NFW ones. Figure 1 indicates that the
+uncertainties on the mass density pro ﬁle are narrowest at near
+the half-light radius, consistent with Wolf et al. (2010).
+Moreover, several studies have reported that these UFDs,
+especially Segue 1 and Willman 1, can provide the strongest
+constraint on fuzzy dark matter (FDM) and SIDM models,
+which can create a naturally cored dark matter density pro ﬁle
+without relying on any baryonic physics (e.g., Hayashi et al.
+Table 1
+Observational Data for the Ultrafaint Dwarf Galaxies
+Object Nsample ( )LLlog V10 De b* ¢q 〈[Fe/H]〉 References
+(kpc)( pc)( Axial Ratio )( dex)
+Antlia 2 283 5.88 ± 0.10 129 ± 7 2867 ± 312 0.62 ± 0.08 −1.77 ± 0.08 (1), (9)
+Boötes I 66 4.33 ± 0.10 66 ± 2 191 ± 8 0.70 ± 0.03 −2.34 ± 0.05 (2), (3), (4)
+Canes Venatici I 214 5.45 ± 0.02 218 ± 2 452 ± 13 0.61 ± 0.03 −1.91 ± 0.01 (2), (5), (6)
+Canes Venatici II 25 4.00 ± 0.13 160 ± 27 1 ± 11 0.60 ± 0.13 −2.12 ± 0.05 (2), (5), (7)
+Coma Berenices 59 3.68 ± 0.10 44 ± 27 2 ± 4 0.62 ± 0.05 −2.25 ± 0.05 (2), (5), (8)
+Crater 2 141 5.21 ± 0.10 118 ± 1 1066 ± 84 0.88 ± 0.02 −2.10 ± 0.08 (9), (10)
+Draco 2 9 3.10 ± 0.40 20 ± 3 -
++19 6
+8 0.76 ± 0.25 −2.70 ± 0.1 (11), (12)
+Eridanus II 92 4.82 ± 0.04 380 ± 2 196 ± 19 0.65 ± 0.06 −2.38 ± 0.13 (2), (13), (14)
+Grus 1 8 3.32 ± 0.24 120 ± 11 28 ± 23 0.55 ± 0.3 −2.62 ± 0.1 (2), (15)
+Grus 2 19 3.33 ± 0.04 55 ± 29 4 ± 9 -
++1.00 0.21
+0.0 −2.51 ± 0.11 (16), (17), (18)
+Hercules 18 4.27 ± 0.07 132 ± 12 216 ± 17 0.31 ± 0.03 −2.39 ± 0.04 (2), (5), (19)
+Horologium I 5 3.35 ± 0.22 79 ± 23 7 ± 7 0.73 ± 0.13 −2.76 ± 0.1 (2), (20)
+Hydra II 13 3.77 ± 0.15 134 ± 10 59 ± 11 0.76 ± 0.16 −2.02 ± 0.08 (2), (21), (22)
+Leo IV 18 3.93 ± 0.10 154 ± 5 114 ± 13 0.83 ± 0.09 −2.47 ± 0.14 (2), (3), (23)
+Leo V 7 3.69 ± 0.14 169 ± 44 9 ± 16 0.57 ± 0.22 −2.28 ± 0.16 (2), (3), (23)
+Leo T 19 4.97 ± 0.06 417 ± 19 153 ± 16 0.77 ± 0.09 −1.74 ± 0.04 (2), (5), (24)
+Pisces II 7 3.62 ± 0.15 182 ± 25 9 ± 9 0.66 ± 0.10 −2.45 ± 0.07 (2), (21), (25)
+Reticulum II 25 3.48 ± 0.15 32 ± 24 8 ± 2 0.42 ± 0.02 −2.46 ± 0.1 (2), (20), (26)
+Segue 1 71 2.45 ± 0.29 23 ± 22 4 ± 3 0.67 ± 0.1 - -
++2.71 0.39
+0.45 (2), (19), (27)
+Segue 2 26 2.77 ± 0.35 35 ± 23 8 ± 3 0.78 ± 0.07 −2.22 ± 0.13 (2), (28), (29)
+Triangulum II 13 2.65 ± 0.20 30 ± 21 7 ± 4 0.54 ± 0.16 −2.24 ± 0.05 (2), (30), (31)
+Tucana 2 19 3.45 ± 0.63 57 ± 5 -
++165 19
+28 0.61 ± 0.15 - -
++2.23 0.12
+0.18 (26), (35)
+Tucana 3 26 2.70 ± 0.10 25 ± 24 4 ± 6 0.80 ± 0.1 −2.42 ± 0.08 (16), (32)
+Tucana 4 11 3.14 ± 0.07 48 ± 4 127 ± 24 0.40 ± 0.1 −2.49 ± 0.16 (16), (18)
+Ursa Major I 39 3.98 ± 0.15 97 ± 4 234 ± 10 0.41 ± 0.03 −2.10 ± 0.03 (2), (5), (33)
+Ursa Major II 20 3.63 ± 0.10 32 ± 4 128 ± 5 0.44 ± 0.03 −2.18 ± 0.03 (2), (5), (33)
+Willman 1 40 2.94 ± 0.30 38 ± 72 8 ± 2 0.53 ± 0.06 −2.19 ± 0.08 (2), (34)
+Note. The names of galaxies in bold are those shown in Figure 1. The table lists the number of member stars with velocity measurements available from the kinematic
+analysis (Nsample), V-band absolute magnitudes (LV), distances from the Sun (De), projected half-light radii (b*), projected stellar axial ratios ( ¢q ), mean
+metallicities (〈[Fe/H]〉), and references. Here, a projected stellar axial ratio ¢q is related to the intrinsic one q via the inclination angle i: ¢ =+qi q i cos sin22 2 2 . This
+equation can be rewritten as = ¢ -qq i i cos sin22 (Hubble 1926). Thus, the range of inclination angle is con ﬁned by  ¢iq0c o s 22 .
+References. (1) Torrealba et al. (2019); (2) Muñoz et al. (2018); (3) Jenkins et al. (2021); (4) Dall’Ora et al. (2006); (5) Kirby et al. (2013b); (6) Kuehn et al. (2008);
+(7) Greco et al. (2008); (8) Belokurov et al. (2007); (9) Ji et al. (2021); (10) Torrealba et al. (2016); (11) Laevens et al. (2015a); (12) Longeard et al. (2018); (13)
+Zoutendijk et al. (2021); (14) Li et al. (2017); (15) Chiti et al. (2022);(16) Drlica-Wagner et al. (2015); (17) Martínez-Vázquez et al. (2019); (18) Simon et al. (2020);
+(19) Martin et al. (2008); (20) Koposov et al. (2015b); (21) Kirby et al. (2015); (22) Martin et al. (2015); (23) de Jong et al. (2010); (24) de Jong et al. (2008); (25)
+Belokurov et al. (2010); (26) Koposov et al. (2015a); (27) Simon et al. (2011); (28) Belokurov et al. (2009); (29) Kirby et al. (2013a); (30) Laevens et al. (2015b); (31)
+Kirby et al. (2017); (32) Simon et al. (2017); (33) Simon & Geha (2007); (34) Willman et al. (2011); (35) Chiti et al. (2023).
+4
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 5 =====
+2021a, 2021b). This implies that Segue 1 and Willman 1 could
+have cuspy dark matter halos.
+Second, the other well-sampled UFDs tend to be somewhat
+cuspy pro ﬁles, but there are huge uncertainties in the inferred
+density slopes. In fact, they permit γ ∼ 0, that is, a cored dark
+matter density within 95% con ﬁdence. Therefore, it is
+impossible to make a ﬁnal conclusion as to whether these
+remaining poorly sampled galaxies have cored or cuspy dark
+matter halos. The other galaxies, which are not shown here,
+also have huge uncertainties on their inner slopes of dark matter
+density pro ﬁles from Column 8 in Table A1, which shows the
+constraints on γ.
+Third, dark matter densities of the diffuse galaxies (Antlia 2
+and Crater 2) are around one order of magnitude less dense than
+those of the other dwarf satellites. In particular, Antlia 2 favors
+having the diffuse dark matter halo as well as its stellar
+component. The dark matter scale density (ρ
+0) of Antlia 2 is
+consistent with the result from Torrealba et al. (2019).
+We compare our results, especially for γ, with other studies.
+Unfortunately, it is not possible to compare the inner slopes of
+dark matter density pro ﬁles in the UFDs. However, there are
+several papers that have estimated their inner slopes. Errani
+et al. (2018) adopted the mean density within 1.8 times the
+half-light radius of a dSph and found that cuspy dark matter
+density pro ﬁles (γ ∼ 1) can reproduce the mean densities of
+Canes Venatici I, Canes Venatici II, Coma Berenices, Leo T,
+Ursa Major II, Segue 1, and Segue 2. Their results are roughly
+consistent with our results within the 68% con ﬁdence region.
+On the other hand, Zoutendijk et al. (2021) made an attempt to
+constrain the dark matter density pro ﬁle of Eridanus 2 using
+CJAM (Cappellari 2008; Watkins et al. 2013) and
+pyGravSphere (Read & Steger 2017; Genina et al. 2020) with
+a generalized Hernquist pro ﬁle. From their analysis, the inner
+slope γ is constrained as γ > 0.57 (68% con ﬁdence region ).
+This is also roughly consistent with our estimation within the
+68% con ﬁdence region.
+3.2.2. Robustness of the Estimated Density Pro ﬁles
+To investigate the robustness of our results, especially
+regarding the inner slope of a dark matter density pro ﬁle, γ,w e
+perform the same MCMC ﬁtting procedure (see Section 2.2) for
+the case of a wider range of prior for γ than the ﬁducial
+parameter range (0  γ  2). Namely, we adopt here the case of
+a ﬂat prior over the range of g- ¢22 , and we impose
+γ = 0i f g¢ has a negative value and g g= ¢ otherwise. This is
+because the ﬁducial one might lead to a bias toward cuspy
+density pro ﬁles. Using this new wide prior, we rerun the
+MCMC ﬁtting procedure and estimate the dark matter density
+proﬁles for the representative eight galaxies.
+Figure 1 shows the comparison of the inferred dark matter
+density proﬁles for the eight galaxies for the ﬁducial and wider
+prior ranges. The colored solid line and shaded region in each
+panel show the results from the ﬁducial case, while the gray
+dashed lines denote the ones for the case of wider prior ranges.
+Figure 1 shows that the estimated dark matter density pro ﬁles
+of most galaxies are largely affected by the new prior range. In
+particular, this prior makes their central densities clearly less
+dense. Therefore, we note that most of the galaxies with small
+data volumes should be sensitive to the choice of priors. This
+point is also highlighted in the mass-orbit modelings of
+dSphs (e.g., Mamon et al. 2015).
+On the other hand, for galaxies with cuspy dark matter, such
+as Eridanus II, Segue 1, and Willman 1, the inner slopes are not
+Figure 1. Inferred dark matter density pro ﬁles along the major axes of the eight galaxies having the largest number of kinematic samples. The solid line in each panel
+denotes the median value, and the shaded region depicts the 68% con ﬁdence interval. On the other hand, the gray thick and thin dashed lines show the median and the
+68% conﬁdence intervals for the case of a wider prior range ( g- ¢2.0 2.0 , but if gg¢ <=0 0, see the text for the details ). The vertical dashed line in each
+panel corresponds to the half-light radius of each galaxy.
+5
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 6 =====
+much changed with the wider range of priors, as expected. The
+possible reason why these galaxies prefer cuspy dark matter
+density pro ﬁles comes from the following properties of their
+line-of-sight velocity dispersion pro ﬁle in the central region.
+Although the variations of Q (dark-halo shape) and β
+z (velocity
+anisotropy) give a similar effect on the entire shape of line-of-
+sight velocity dispersion pro ﬁles (see Cappellari 2008; Hayashi
+& Chiba 2015), the inner slope of dark matter density pro ﬁle, γ,
+can have an impact only on an inner velocity dispersion
+proﬁle (Hayashi et al. 2020). However, we bear in mind that the
+assumption of Gaussian line-of-sight velocity distribution
+causes a bias toward cuspy dark matter density pro ﬁles for
+dSphs with Plummer stellar density pro ﬁle plus cored dark
+matter halo (Read et al. 2021).
+Note that cuspy dark matter density pro ﬁles in Eridanus II,
+Segue 1, and Willman 1 mainly come from the kinematic
+sample in the inner part (especially within 10 pc ) in our
+unbinned analysis. The unbinned analysis can trace the inner
+kinematic structures in galaxies, while the binned one might
+smear out such information, and thus may not provide such a
+constraint on inner slopes of dark matter density pro ﬁle as the
+unbinned one (e.g., Richardson & Fairbairn 2014).
+Finally, it is worth noting that even if a dSph is largely
+dominated by a gravitational potential by dark matter, the
+speciﬁc assumption of stellar density pro ﬁles can affect the
+inferred slope of a dark matter density pro ﬁle at the inner parts
+of a dSph (e.g., Evans et al. 2009; Hayashi & Chiba 2012).T o
+address this issue, we take into account another functional form
+for the surface stellar density pro ﬁle, namely, an exponential
+density pro ﬁle.
+11 We adopt this density pro ﬁle to the same
+dynamical analysis as for a Plummer model. Taking the case of
+Segue 1 as an example, the constraints on the model parameters
+do not differ signi ﬁcantly, despite the differences in the
+selected stellar density pro ﬁles. This result may be attributed to
+Segue 1 being a poorly sampled system, where statistical errors
+dominate the uncertainties in the model parameters. For the
+case of Antlia 2 as another example, on the other hand, the
+inner slope of dark matter density estimated by an exponential
+stellar pro ﬁle is slightly shallower (Δγ = 0.2) than that
+estimated by a Plummer one, even though those values are
+roughly consistent within the 68% con ﬁdence level. This is due
+to the fact that exponential three-dimensional pro ﬁles are
+somewhat steeper in the central regions compared to Plummer
+proﬁles. As a result, we con ﬁrm that there are systematic
+uncertainties, to some extent, for the inner slopes of dark matter
+density when different stellar density pro ﬁles are adopted.
+3.2.3. Inner Dark Matter Density Slope versus Stellar-to-halo Mass
+Ratio
+Figure 2 shows the logarithmic slope of the dark matter
+density proﬁle at 1.5% of the virial radius of the dark halo as a
+function of the stellar mass-to-halo mass ratio, M*/Mhalo. This
+is analogous to Figure 6 of Hayashi et al. (2020, originally
+following Bullock & Boylan-Kolchin 2017), but includes
+several galaxies studied in our study. The blue and orange dots
+and shaded bands depict the results from NIHAO (Tollet et al.
+2016) and FIRE-2 (Lazar et al. 2020) zoom-in hydrodynamical
+simulations, while the gray band shows the expected range of
+dark matter pro ﬁle slopes for the NFW pro ﬁles as derived from
+dark matter-only simulations (Tollet et al. 2016).
+To compute the stellar mass-halo mass ratios of the dwarf
+galaxies, we employ the self-consistent abundance matching
+model by Moster et al. (2013) and adopt the stellar masses of
+most dSphs taken from the literature (Table 1). For several
+UFDs having no information about stellar masses, we calculate
+those of their UFDs by their luminosities by assuming a stellar
+mass-to-light ratio of 1.6 M
+e/Le, which is the median value for
+dSphs measured by Woo et al. (2008). The black points with
+1σ error bars denote the results of classical dSphs estimated by
+Hayashi et al. (2020), while the magenta ones denote the
+largest eight galaxies among the sample in this work.
+According to the predictions from the simulations (blue and
+orange bands), an inner slope of a dark matter density pro ﬁle in
+the UFD regime (M*/Mhalo  10−4) should not be affected
+largely by baryonic feedback effects, but we note from this
+ﬁgure that all of their inner dark matter slopes except one
+(Segue 1 ) are shallower than predicted by the hydrodynamical
+simulations. On the other hand, there are large uncertainties in
+both the inner slopes and the stellar-to-halo mass ratios of the
+UFDs. Thus, we cannot make a robust conclusion about
+whether the relation exists or not from the currently
+available data.
+4. Discussion
+4.1. Dark Matter Densities at 150 pc
+Read et al. (2019) introduced the local dark matter density at
+a common radius of 150 pc from the center of each dSph,
+ρ
+DM(150 pc), which is more robustly estimated than either the
+inner dark matter slope or its normalization ρ0 in their spherical
+mass models. They also argued that this density is enough
+different to divide the luminous dwarf galaxies into cusps or
+cores. Kaplinghat et al. (2019) found that ρ
+DM(150 pc) of the
+Figure 2. The inner dark matter density slope at 1.5% of the virial radius of the
+dark halo, rvir, as a function of the ratio between stellar and dark-halo masses,
+M*/Mhalo, of the Galactic dSphs. The ﬁlled magenta circles with 1 σ error bars
+are the results of the represented galaxies in this work, while the black- ﬁlled
+ones are the results of the classical dSphs referred by Hayashi et al. (2020). The
+shaded gray band shows the expected range of dark matter pro ﬁle slopes for
+NFW proﬁles as derived from dark matter-only simulations (Tollet et al. 2016).
+The blue and orange points denote simulated satellites from NIHAO (Tollet
+et al. 2016) and FIRE-2 (Lazar et al. 2020) hydrodynamical simulations,
+respectively. The blue and orange shaded bands show the expected ranges from
+these simulated galaxies (to guide the eye ).
+11 Sµ -() ( )xy m b,e x p ** , where =+ ¢mx y q2 22 2
+* and b* is the scale
+radius. (x, y) are the sky coordinates aligned with the major and minor axes,
+respectively.
+6
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 7 =====
+Galactic dSphs anticorrelates with their orbital pericenter
+distance, rperi, estimated by Gaia. In combination with the
+too-big-to-fail problem (Boylan-Kolchin et al. 2011, 2012),
+they proposed that this anticorrelation can provide a new
+incisive test of the nature of dark matter, especially for SIDM
+models (e.g., Nishikawa et al. 2020; Correa 2021; Jiang et al.
+2021).
+Following these works, we calculate ρDM(150 pc) along the
+major axis of the sample dwarf galaxies. The calculated values
+are tabulated in Column 11 of Table A1. Utilizing the part of
+these estimations, Ebisu et al. (2022) compared the
+ρ
+DM(150 pc)–rperi relation with that from the dark matter
+simulations based on ΛCDM and SIDM models with different
+(velocity independent) self-interaction cross sections (σ/m = 1,
+3c m 2 g−1). Although the uncertainties of ρDM(150 pc) of
+UFDs are large, the SIDM scattering cross section less than
+3c m
+2 g−1 could be favored.
+We scrutinize the anticorrelation between ρDM(150 pc)–rperi
+for all sample galaxies. To do this with comparatively secure
+results, we separate the galaxies into two groups: the ﬁrst group
+contains galaxies with at least 20 stars (colored ﬁlled circles in
+Figure 3), while the second group has fewer than 20
+stars (colored thin open circles in Figure 3).12 For the pericenter
+radius, we adopt the values estimated by Battaglia et al. (2022),
+which analyzed the latest Gaia data (Gaia EDR3, Brown et al.
+2021) assuming a Milky Way potential model with
+8.8 × 1011Me.13 Figure 3 displays the relation between
+ρDM(150 pc) and rperi. The ﬁlled diamonds with error bars
+denote the inferred ρDM(150 pc) of the classical dSphs (Hayashi
+et al. 2020), while the colored ones denote the results of all
+sample dwarf galaxies in this work. The dwarf galaxies are
+widely distributed in this plot, even though there are still large
+uncertainties.
+Besides, Antlia 2, Crater 2, and Tucana 3 have very low dark
+matter densities, and thus they deviate signi ﬁcantly from the
+other ones. This deviation might be due to tidal effects. In
+particular, according to several studies of Tucana 3 ʼs orbital
+evolution based on Gaia satellites, this UFD is very likely to
+have traveled within 10 kpc from the Galactic Center (e.g.,
+Battaglia et al. 2022) and might be embedded in a tidal stream,
+which stems from tidal disruption (e.g., Drlica-Wagner et al.
+2015; Erkal et al. 2018; Li et al. 2018). Therefore, this UFD
+might have been disturbed strongly by the gravitational
+potential of the Milky Way, and thus might have experienced
+a high mass loss.
+We also compare dark matter subhalos predicted from dark-
+matter-only simulations based on ΛCDM theory. To create the
+subhalo sample, the simulated data we use and the selection
+procedure are the same as Hayashi et al. (2020). We use the
+ROCKSTAR phase space halo /subhalo ﬁnder to select
+subhalos (Behroozi et al. 2013). In Figure 3, the small ﬁlled
+squares show the predicted subhalos associated with these
+Milky Way-sized dark matter host halos. These subhalos have
+V
+peak > 25 km s −1, where Vpeak is the maximum circular
+velocity of the subhalo over its assembly history. The color
+scale of the squares indicates the virial masses of the host halos.
+The simulated subhalos show a weak anticorrelation, which
+does not depend on their host halo masses. On the other hand,
+although it does not seem that the Galactic satellites have such
+anticorrelation, these are reasonably consistent with the
+simulated subhalos. As already discussed in the literature (e.g.,
+, Genina et al. 2022; Hayashi et al. 2020), the distribution could
+be explained by survivor bias, which means denser central dark
+matter densities can survive even suffering from strong tidal
+effects at small pericenters and from repeated tides (e.g., Errani
+& Navarro 2021).
+However, despite taking into account the tidal effects, the
+dark matter simulations have dif ﬁculty explaining the extremely
+low dark matter densities of Antlia 2, Crater 2, and Tucana 3.
+This discrepancy has already been argued by several works
+(e.g., Sameie et al. 2020;J ie ta l . 2021; Borukhovetskaya et al.
+2022). Obviously, we should bear in mind that our dynamical
+analysis is based on dynamical equilibrium, while such diffuse
+systems can deviate from the dynamical equilibrium. Thus, our
+resultant dark matter densities could have systematic uncertain-
+ties that stem from this assumption. In addition, it can be
+difﬁcult for commonly used subhalo ﬁnders (e.g., Behroozi et al.
+2013) to detect the substructures that have very low dark matter
+densities because of low-contrast dark matter densities between
+a subhalo and the background (i.e., a host halo ). Therefore, it
+should be noted that such diffuse subhalos can be easily
+overlooked by the subhalo ﬁnders.
+4.2. Dark Matter Fractions
+Lovell et al. (2018) investigated the relative content of dark
+matter and baryonic mass using the IllustrisTNG (TNG,
+Figure 3. Dark matter densities at 150 pc, ρDM(150 pc ), as a function of the
+pericenter radii, rperi, of the dSphs. The small ﬁlled squares denote the
+individual subhalos with Vpeak > 25 km s −1 predicted from dark matter
+simulations (Ishiyama et al. 2021). The color scale indicates the virial masses
+of their host halos. The ﬁlled diamonds with error bars denote the results of the
+classical dSphs (Hayashi et al. 2020). The ﬁlled circles with error bars show the
+dwarf galaxies that have a number of kinematic samples greater than 20 stars,
+while open square ones show the galaxies that have small samples of less than
+20 stars. To plot Tucana 3 in this range, we multiply its density eightyfold.
+12 This is motivated from the number of free parameters in our dynamical
+models. There are nine parameters to ﬁt the observational quantities in
+this work.
+13 We bear in mind that this pericenter estimation did not consider the
+dynamical effects of the Large Magellanic Cloud (LMC). It is possible that
+some of the dSphs have passed near LMC and thus have acquired angular
+momentum during their orbit leading to biases in their pericenters.
+7
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 8 =====
+Springel et al. 2018) and Illustris (Vogelsberger et al. 2014)
+simulations, in order to make theoretical predictions about the
+relationship between a galaxy ’s total mass and its stellar
+component. They selected simulated galaxies with
+M* ∼ 108–1012 Me at z = 0, and then computed their dark
+matter fraction (DMF), fDM = MDM/(MDM + M*) within sev-
+eral kinds of radii as a function of galaxy stellar mass (e.g.,
+half-light radius rhalf). They predicted that fDM( < rhalf) is
+around 0.8 at M* ∼ 108Me and gradually decreases toward
+0.5–0.6 with increasing stellar mass at M* ∼ 1010Me for the
+case of DMF within rhalf.
+Following this work, we calculate fDM( < rhalf) of the sample
+dSphs. Figure 4 shows the fDM( < rhalf) as a function of M*.
+The symbols are the same as those in Figure 3. The TNG100
+and Illustris simulated data (taken from Lovell et al. 2018) are
+shown in blue and red, respectively. The solid and dashed lines
+denote the median and 68% of their data. While most low-mass
+dSphs have f
+DM ∼ 1.0, the dark matter fractions of massive
+ones decrease to fDM ∼ 0.7–0.8, but there are large uncertain-
+ties. On the other hand, due to resolution limits, the simulation
+results cannot reach low-mass galaxies less than M* ; 108Me.
+In order to inspect whether the simulated fractions are
+consistent with the observed ones, it is necessary to perform
+much more high-resolution cosmological simulations.
+4.3. Dynamical Mass-to-light Ratios
+As a by-product of the ﬁtting results, we estimate the
+dynamical mass-to-light ratios within the half-light radii of the
+dSphs, which we write as
+( )ML rdyn half . This is motivated by the
+increasing mass-to-light ratio for decreasing dwarf
+luminosity (Mateo 1998; Wolf et al. 2010; McConnachie 2012),
+whose mass-to-light ratios increase remarkably with decreasing
+luminosity. We therefore calculate
+( )ML rdyn half of our sample
+dwarf galaxies as well as the classical dSphs to examine
+whether the scaling law still sustains even considering the non-
+sphericity of their dark matter halos and the latest data sample.
+The dynamical mass-to-light ratios we estimated are shown
+in Column 10 of Table A1, and Figure 5 shows the dynamical
+mass-to-light ratios of all dSphs in our sample, as a function of
+stellar mass (left panel ) and of averaged metallicity (middle
+panel). Here, we focus only on the ﬁlled symbols, which
+correspond to the galaxies having large kinematic sample sizes
+larger than 20 stars. In the left panel of Figure 5, the dotted line
+indicates
+µ-()ML Mlog 0.4 log r10 dyn 10half *, suggested by the
+scaling relations found by Fattahi et al. (2018) in their
+hydrodynamical simulations: M* ∝ r7/2, and Vcirc(rhalf) ∝ r1/2
+as well as sµMrdyn half los
+2 and M* ∝ L*.
+Figure 5 shows that most of the Galactic dSphs agree with
+the suggested relation. However, there is non-negligible scatter
+in the mass-to-light ratios, not seen in the simulations (see
+Figure 7 in Fattahi et al. 2018), especially for the simulated
+galaxies with low mass-to-light ratios. There are several
+explanations for this discrepancy: (i) the simulations might
+not resolve dark matter densities at UFD-mass scales and with
+very diffuse galaxies, (ii) they might not be able to identify the
+galaxies that were strongly stirred by the tidal effects, and (iii)
+the simulated less-massive galaxies could maintain cuspy dark
+matter densities even considering stellar feedback effects or (iv)
+biases in the kinematic mass modeling and /or underestimated
+uncertainties on Mdyn. To verify these possibilities, high-
+resolution hydrodynamical simulations of Milky Way analogs
+are required. However, this is beyond the scope of the present
+article.
+Meanwhile, we con ﬁrm that the dynamical mass-to-light
+ratio might anticorrelate with the averaged metallicity even
+at the low-metallicity end, as shown in the right panel of
+Figure 5. The dotted line in this panel shows the relation
+µ- á ñ() [ ]MLlog 1.3 Fe H r10 dyn half derived by the NFW dark
+matter halo ( µ-()ML Mlog 0.4 log r10 dyn 10half *) and the uni-
+versal MZR (Kirby et al. 2013a), which indicates
+á ñµ[] MFe H 0.3 log 10 *. From this panel, the observed dSphs
+are in line with the relation, even though a large scatter still
+exists.
+The scatter in mass-to-light ratio with stellar mass and with
+metallicity, shown in Figure 5, might stem from tidal effects,
+even though non-sphericity of the dark matter halo and
+deviation from an NFW density pro ﬁle could also be possible
+reasons for the scatters. In the following section, we discuss the
+tidal effects on the dynamical mass-to-light ratio relations,
+taking into account the empirical tidal evolution models.
+4.4. Tidal Evolution of the Dwarf Satellites
+To examine the tidal effects on
+( )ML rdyn half and M*,w e
+estimate the evolution of these based on a simple empirical
+formula calculated by Errani et al. (2015).T h i sf o r m u l a ,
+known as tidal evolutionary tracks , describes parametrically
+the tidal evolution of the half-light radius rh, the luminosity
+averaged velocity dispersion σh within rh, the total stellar
+mass M*, and the total mass Mh enclosed within rh,w h i c ha r e
+all normalized to their initial values under the assumption that
+the stellar density pro ﬁle follows that of th e Plummer sphere.
+Errani et al. (2015) performed high-resolution N-body
+simulations for the cases of cored and cuspy dark matter
+subhalos and searched the empirical ﬁtting parameters to their
+tidal tracks proposed by Peñarrubia et al. (2008).T h e ﬁtting
+formula is written as
+= + =
+ab
+a() () ()fx x
+x xM M2
+1 where . 6 hh ,0
+Figure 4. Mass fraction of dark matter in the dSphs within the half-light
+radius (rhalf) as a function of galaxy stellar mass. The colors and symbols for
+the dSphs are the same as in Figure 3. The TNG100 and Illustris simulated data
+(taken from Lovell et al. 2018) are shown in blue and red, respectively. The
+solid and dashed lines denote the median and 68% of their data.
+8
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 9 =====
+Here, x is the total mass Mh that remains bound within the
+initial stellar half-mass –radius of the satellite, in units of the
+pre-stripping value, Mh,0. α and β are the ﬁtting parameters.
+The best-ﬁt values for both core and cusp cases are tabulated in
+Table 1 in Errani et al. (2015).14 In addition, the empirical
+formula with the best- ﬁt values is in accord with the results
+from APOSTLE simulations, which are cosmological hydro-
+dynamical simulations of the Local Group (Fattahi et al. 2018).
+Using the tidal evolutionary tracks of M* and Mh, relative to
+their unstripped values, we calculate the tidal evolution of
+( )ML rdyn half . The estimated tidal evolution of ( )ML rdyn half are
+plotted on the ( )–ML M rdyn half * and áñ( )– [ ]ML Fe Hrdyn half
+planes of Figure 5. The thick colored lines in each panel
+display the evolutionary tracks for the cases of cuspy and cored
+dark matter subhalos. The color bar indicates the subhalo total
+mass fraction that is retained against tidal stripping. The yellow
+color indicates M
+h = Mh,0, which means the dark halo is pre-
+infalling. Here, we assume that metallicities in the dwarf
+galaxies are unaffected by tidal effects (i.e., they shift only
+horizontally (vertically) in the middle (right) panel in
+Figure 5).15
+The left and middle panels of Figure 5 indicate that for
+subhalos with cuspy dark matter, tidal stripping does not alter
+much either scaling relation for ( )–ML M rdyn half * and
+áñ( )– [ ]ML Fe Hrdyn half . Instead, for subhalos with constant
+density cores, ( )ML rdyn half is changed more clearly. In the right
+panel, on the other hand, we ﬁnd that a stellar mass embedded
+in a cuspy dark matter halo is decreased prominently by tidal
+stripping. These apparent counterintuitive results are already
+discussed by Errani et al. (2015, see also Peñarrubia et al.
+2008). They interpreted that most of particles tagged as stars in
+a cored dark matter halo are associated with the most-bound
+dark matter particles, while a small fraction of stars are
+associated with dark matter particles with high binding energy
+in a cusped dark matter halo. In short, Figure 5 indicates that
+the tidal evolution of dwarf galaxies with cuspy halos does not
+affect the scaling relations of the mass-to-light ratio with stellar
+mass and with metallicity, but does affect the MZR. These
+results are consistent with the results from cosmological
+hydrodynamical simulations (Fattahi et al. 2018). Interestingly,
+the presence of negative metallicity gradients can potentially
+amplify the above results. Moreover, the results imply that the
+large scatter of metallicity at the faint end of the MZR can be
+explained by tidal stripping of less-massive satellites associated
+with cuspy dark matter halos, even though this scatter can also
+be caused by the lack of data to properly measure stellar mass
+and metallicity.
+Indeed, the results of Segue 1 and Willman 1, which favor
+cuspy dark matter density proﬁles, can be interpreted by the tidal
+evolution within their ﬁnite uncertainties. The stellar and dark
+matter halo masses of their progenitors would have been more
+massive. After the accretion onto the Milky Way, the tidal effects
+can decrease their stellar masses, but the mass-to-light ratios are
+not much altered. However, although Eridanus II also appears to
+have a cuspy dark matter halo, it might not be evolved along the
+tracks. In particular, the deviation from the MZR cannot be
+explained by tidal effects. Besides, the pericenter distance of
+Eridanus II may be very large (r
+peri ∼ 350 kpc estimated by using
+Gaia EDR3, e.g., Battaglia et al. 2022), and thus this galaxy
+should not suffer from tidal forces. Therefore, the chemo-
+dynamical evolution of this galaxy could be interpreted by the
+scatter induced from the merging and star formation histories,
+baryon feedback, and metallicity gradient of isolated
+systems (e.g., Wetzel & Hopkins 2016; Mercado et al. 2021).
+On the other hand, several galaxies, especially Tucana 3,
+deviate signi ﬁcantly from the scaling relations shown in
+Figure 5 except for the MZR. As mentioned above, Tucana 3
+Figure 5. Left: the dynamical mass-to-light ratio within a half-light radius, ()ML rdyn half , as a function of stellar mass for the dwarf galaxies. The gray dotted line
+shows µ-()ML Mlog 0.4 log r10 dyn 10half * suggested by NFW dark matter halos. Middle: ()ML rdyn half as a function of averaged metallicity. Whereas the dotted line
+denotes µ- á ñ() [ ]MLlog 1.3 Fe H r10 dyn half induced from an NFW dark matter halo and MZR (the dotted lines in the right and middle panels ). Right: the stellar mass
+vs. averaged metallicity. The gray dashed line in this panel represents the universal MZR (á ñµ[] MFe H 0.3 log 10 *), taken from Kirby et al. (2013a). The colored thick
+lines in each panel correspond to the tidal evolutionary track based on Errani et al. (2015), see also Peñarrubia et al. 2008; Fattahi et al. 2018). The color scale indicates
+the subhalo total mass fraction that is retained against tidal stripping. An initial one (yellow) means the fraction before the halo was affected by tidal effects. In the
+middle panel, the yellow color for the cuspy case seems to have disappeared. The yellow is hidden by the blue because the evolution causes a downward and then an
+upward movement in ()ML rdyn half , as can be seen in the left panel. Here, we suppose that the metallicities in the dwarf galaxies are unaffected by tidal effects (i.e.,
+they shift only vertically (horizontally) in the middle (right) panel).
+14 In this paper, we adopt the best- ﬁt values as follows. Core cases :
+(α , β) = (1.63, 0.03 ) for rh/rh,0 and (α , β) = (0.82, 0.82 ) for M*/M*,0, Cusp
+cases: (α , β) = (1.22, 0.33) for rh/rh,0 and (α , β) = (3.57, 2.06) for M*/M*,0.
+15 If a negative metallicity gradient in a dwarf galaxy exists, the metallicity
+could be enriched by tides because metal-poor stars in the outer parts of a
+galaxy are preferentially stripped.
+9
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 10 =====
+might have been disturbed strongly by the tidal force because at
+the pericenter, it is located very close to the center of the Milky
+Way (3–4 kpc according to Battaglia et al. 2022). Thus, the
+departure of Tucana 3 from the
+( )–ML M rdyn half * on the one
+hand and áñ( )– [ ]ML Fe Hrdyn half on the other hand, combined
+with its normal mass –metallicity relation indicates that
+Tucana 3 has a cored dark matter halo. Even though several
+UFDs (such as Draco II, Segue 1, Ursa Major I, Willman 1,
+etc.) can also be considered as tidally stirred (e.g., Battaglia
+et al. 2022), they might not have suffered stronger tidal effects
+than Tucana 3. However, we bear in mind that there is
+considerable uncertainty in the ( )ML rdyn half estimation of
+Tucana 3 due to the small number (26) of available velocities
+and the dynamical nonequilibrium provoked by strong tidal
+effects.
+5. Summary and Conclusion
+In this paper, we investigate dark matter halo properties of
+the Galactic UFD and diffuse galaxies utilizing nonspherical
+dynamical mass models based on axisymmetric Jeans
+equations.
+Applying our nonspherical mass models to the latest
+kinematic data of the 25 UFDs and two diffuse galaxies in
+the Milky Way, we estimate their dark matter density pro ﬁles
+by marginalizing posteriors o f nonspherical dark matter
+halo parameters. We ﬁnd (Figure 1) that most of these
+galaxies have large uncertain ties on the inferred dark matter
+density pro ﬁles, especially for their inner density slopes,
+which are largely affected by the choice of the range of priors.
+On the other hand, the dark matter density pro ﬁles of
+Eridanus II, Segue I, and Willman 1 are not much affected
+by the choice of priors, and their inner slopes appear to be
+cuspy.
+Utilizing their inferred central dark matter density pro ﬁles,
+we compare them with the predictions from recent cosmolo-
+gical zoom-in hydrodynamical simulations on the relation
+between the inner slope of a dark matter density pro ﬁle and
+stellar mass-to-halo mass ratio in Figure 2. Although some of
+our sample galaxies are roughly consistent with the predictions
+from recent numerical simulations, there are large uncertainties
+in both their inner slopes and stellar-to-halo mass ratios. Thus,
+we cannot make a conclusion about whether the relation exists
+or not from the currently available data.
+We scrutinize the anticorrelation between a dark matter
+density at a radius of 150 pc and the orbital pericenter distance
+of a dwarf satellite highlighted by Kaplinghat et al. (2019) and
+compare it with simulated dark matter subhalos based on
+ΛCDM models (Figure 3). Although it does not seem that the
+dwarf galaxies studied here have this anticorrelation, these are
+roughly consistent with the simulated dark matter subhalos.
+Nevertheless, Antlia 2, Crater 2, and Tucana 3 have very low
+central dark matter densities, thus deviating signi ﬁcantly from
+the anticorrelation. Even after taking into account tidal effects,
+dark matter simulations have dif ﬁculty in explaining such large
+deviations from the density –mass relation. However, we should
+bear in mind that commonly used subhalo ﬁnders are not very
+able to detect substructures that have very low dark matter
+densities.
+Following several simulation works, such as IllustrisTNG
+and Illustris, we calculate dark matter fraction within a half-
+light radius, f
+DM(< rhalf) of the sample dSphs. While most
+low-mass dSphs have fDM ∼ 1.0, the dark matter fractions of
+massive ones decrease to fDM ∼ 0.7–0.8, but there are large
+uncertainties. On the o ther hand, due to resolution limits, the
+simulation results cannot reac h low-mass galaxies less than
+M* ; 108Me. In order to inspect whether the simulated
+fractions are consistent with the observed ones, it is necessary
+to perform much higher-resolutio n cosmological simulations.
+We also estimate the dynamical mass-to-light ratios within
+the half-light radii of our sample dwarf galaxies
+( )ML rdyn half .
+We con ﬁrm that most Galactic dwarf satellites agree with the
+scaling relation between the dynamical mass-to-light ratios and
+stellar mass proposed by an NFW dark matter density pro ﬁle as
+well as the relation between the mass-to-light ratios and the
+averaged metallicities at the low-metallicity end, even though
+there are large uncertainties in the mass-to-light ratios
+(Figure 5).
+Using these scaling relations for the mass-to-light ratios and
+the universal MZR, we discuss the tidal evolution of the dwarf
+satellites based on empirical tidal evolutionary tracks .F r o m
+the evolutionary tracks, if t hese satellites have cuspy dark
+matter halos, tidal stripping does not alter much the dynamical
+mass-to-light ratios. On the other hand, the mass-to-light
+ratios of the satellites having constant density cores might be
+changed more clearly. In light of the MZR, tidal stripping
+might be capable of decreasing a stellar mass. We suggest that
+these results imply that the large scatter of metallicity at the
+faint end of the MZR can be explained by tidal stripping of
+less-massive satellites associated with cuspy dark matter
+halos.
+To ensure our conclusions, especially for tidal evolution for
+the satellites, it is necessary to perform high-resolution
+hydrodynamical simulations in Milky Way analogs so that
+less-massive dwarf satellites can also be resolved (e.g.,
+Applebaum et al. 2021; Grand et al. 2021; Hirai et al. 2022).
+In this regard, using high-resolution simulations in our group,
+we will make an attempt to investigate more details of the
+chemo-dynamical evolution of dwarf satellites in a forthcoming
+paper. It is also important to estimate more accurately the dark
+matter density pro ﬁles of the Galactic dwarf satellites. To this
+end, incorporating higher-order moments of their velocity
+distributions can help to determine uniquely the kinematic
+properties of their stellar systems and to mitigate a degeneracy
+between dark matter density and stellar anisotropy. Further-
+more, the next-generation wide- ﬁeld spectroscopic surveys
+with the Subaru Prime Focus Spectrograph (Takada et al. 2014;
+Tamura et al. 2016) and high-precision spectroscopy on board
+the Thirty Meter Telescope (Simard et al. 2016) will enable us
+to obtain unprecedented data for stellar kinematics and
+chemical abundances for the satellites to tighter constrain their
+dark matter distributions.
+Acknowledgments
+We are grateful to the referee for the careful reading of our
+paper and thoughtful comments. This work was supported in
+part by the MEXT Grant-in-Aid for Scienti ﬁc Research (Nos.
+JP20H01895, JP21K13909, JP21H05447, and JP23H04009
+for K.H., Nos. JP22KJ0157, JP20K14532, JP21H04499,
+JP21K03614, and JP22H01259 for Y.H., Nos. JP18H05437 and
+JP21H05448 for M.C., Nos. JP20H05245 and JP21H01122
+for T.I.). Numerical computations were partially carried out on
+the Aterui II supercomputer at the Center for Computational
+Astrophysics, CfCA, of the National Astronomical Observatory
+of Japan. Y.H. and T.I. have been supported by JICFuS and
+10
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 11 =====
+MEXT as “Program for Promoting Research on the Super-
+computer Fugaku ” (Structure and Evolution of the Universe
+Unraveled by Fusion of Simulation and AI, grant No.
+JPMXP1020230406). T. I. has been supported by IAAR
+Research Support Program, Chiba University, Japan. This work
+was supported in part by the National Science Foundation under
+grant No. PHY-1430152 (JINA Center for the Evolution of the
+Elements).
+Software:N u m P y(Harris et al.2020), Matplotlib(Hunter2007),
+SciPy(Virtanen et al. 2020), corner (Foreman-Mackey2016).
+Appendix A
+Tabulated Model Parameter Constraints
+In this appendix, we present the constraints on the individual
+model parameters for all sample dwarf galaxies. Table A1
+shows the estimated parameters (Q, b
+halo, ρ0, βz, α , β, γ, i) with
+the error values indicating the 68% con ﬁdence intervals
+computed from the posterior distribution functions of the
+parameters. We also show the dynamical mass-to-light ratios
+within their half-light radii, the dark matter densities at 150 pc,
+and the Bayes factors for the addition of a free halo axis ratio.
+11
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 12 =====
+Table A1
+Parameter Constraints for the UFDs
+Object Q ()blog halo log(ρ0) b-- ( )log 1 z αβγ i ()ML rdyn half r ()log 150pcDM ()2 ln BF1
+a ()2 ln BF 2
+a
+(pc)( Me pc−3)( deg)( Me/Le) [Me kpc−3]
+Antlia 2 -
++1.1 0.6
+0.6
+-
++4.5 0.3
+0.4 - -
++3.4 0.4
+0.5
+-
++0.3 0.3
+0.3
+-
++2.0 0.7
+0.7
+-
++6.2 2.2
+2.0
+-
++0.4 0.3
+0.2
+-
++69.7 13.3
+11.2
+-
++47.9 18.7
+28.8
+-
++6.4 0.3
+0.3 1.0 0.5
+Boötes I -
++1.1 0.6
+0.6
+-
++3.7 0.8
+0.9 - -
++1.8 0.9
+1.2
+-
++0.1 0.4
+0.5
+-
++1.8 0.8
+0.8
+-
++6.3 2.2
+2.1
+-
++0.7 0.6
+0.5
+-
++73.2 10.9
+11.7
+-
++114 59
+98
+-
++8.0 0.3
+0.3 0.0 −0.4
+Canes Venatici I -
++1.2 0.5
+0.6
+-
++4.0 0.7
+0.8 - -
++2.2 0.7
+1.1
+-
++0.4 0.3
+0.2
+-
++1.9 0.7
+0.8
+-
++6.3 2.2
+2.1
+-
++0.7 0.5
+0.4
+-
++74.2 10.1
+11.2
+-
++69.9 28.3
+27.9
+-
++7.9 0.3
+0.2 −0.1 0.0
+Canes Venatici II -
++1.1 0.6
+0.6
+-
++3.7 0.8
+0.9 - -
++1.8 1.0
+1.4 - -
++0.2 0.6
+0.5
+-
++1.8 0.8
+0.8
+-
++6.3 2.2
+2.1
+-
++0.8 0.5
+0.5
+-
++73.8 10.3
+8.9
+-
++89.5 48.3
+107.4
+-
++8.2 0.3
+0.4 0.0 −0.1
+Coma Berenices -
++1.2 0.5
+0.6
+-
++3.6 0.9
+1.0 - -
++1.1 0.7
+1.4 - -
++0.2 0.5
+0.5
+-
++1.9 0.7
+0.8
+-
++6.3 2.2
+2.1
+-
++0.5 0.4
+0.4
+-
++71.0 12.3
+12.1
+-
++261 116
+209
+-
++8.4 0.4
+0.3 0.0 0.0
+Crater 2 -
++0.7 0.7
+0.4
+-
++3.6 0.6
+0.6 - -
++3.6 1.0
+0.8
+-
++0.8 0.1
+0.2
+-
++1.6 0.9
+0.8
+-
++6.1 2.4
+2.1
+-
++0.9 0.5
+0.5
+-
++88.0 1.3
+1.5
+-
++9.1 4.0
+5.8
+-
++6.8 0.4
+0.4 0.3 0.0
+Draco 2 -
++1.1 0.6
+0.6
+-
++2.1 1.8
+1.4 - -
++1.9 2.5
+2.0 - -
++0.2 0.5
+0.5
+-
++1.7 0.8
+0.8
+-
++6.4 2.2
+2.1
+-
++0.9 0.7
+0.6
+-
++62.4 17.8
+15.8
+-
++2.5 2.5
+96.9
+-
++5.1 6.4
+2.9 −0.1 −0.1
+Eridanus II -
++1.2 0.5
+0.6
+-
++3.8 0.7
+0.8 - -
++2.6 1.3
+1.2
+-
++0.5 0.2
+0.2
+-
++1.9 0.8
+0.9
+-
++6.3 2.3
+2.1
+-
++1.2 0.4
+0.6
+-
++71.2 12.4
+11.6
+-
++190 73
+107
+-
++8.2 0.2
+0.3 −0.1 0.4
+Grus 1 -
++1.1 0.6
+0.6
+-
++3.6 0.9
+0.9 - -
++2.0 1.0
+1.2
+-
++0.4 0.3
+0.4
+-
++1.8 0.8
+0.8
+-
++6.3 2.2
+2.1
+-
++0.6 0.6
+0.4
+-
++74.5 9.9
+11.0
+-
++15.7 12.7
+74.3
+-
++7.7 0.4
+0.4 0.1 0.2
+Grus 2 -
++1.1 0.6
+0.6
+-
++1.8 1.7
+1.1 - -
++1.7 3.4
+2.0 - -
++0.3 0.5
+0.4
+-
++1.7 0.8
+0.8
+-
++6.5 2.2
+2.1
+-
++1.0 0.7
+0.6
+-
++61.4 18.9
+17.7
+-
++18.2 18.0
+80.2
+-
++5.2 5.2
+1.9 −0.1 −0.1
+Hercules -
++1.1 0.6
+0.6
+-
++3.0 1.2
+1.0 - -
++1.4 1.6
+1.8
+-
++0.2 0.5
+0.6
+-
++1.8 0.8
+0.8
+-
++6.3 2.3
+2.1
+-
++1.0 0.6
+0.7
+-
++81.8 5.1
+5.7
+-
++114 47
+86
+-
++7.9 0.5
+0.3 0.0 0.0
+Horologium I -
++1.1 0.6
+0.6
+-
++2.2 1.7
+1.1
+-
++0.2 2.4
+2.3 - -
++0.3 0.5
+0.5
+-
++1.7 0.8
+0.8
+-
++6.4 2.2
+2.1
+-
++1.1 0.6
+0.7
+-
++63.3 17.3
+14.5
+-
++558 331
+1131
+-
++7.8 2.7
+1.1 0.1 0.1
+Hydra II -
++1.1 0.6
+0.6
+-
++1.4 1.7
+1.0 - -
++2.5 2.8
+1.6 - -
++0.4 0.4
+0.4
+-
++1.7 0.9
+0.8
+-
++6.6 2.1
+2.2
+-
++0.8 0.7
+0.6
+-
++60.0 20.0
+20.1
+-
++0.1 0.1
+2.8
+-
++2.5 6.1
+3.7 0.0 −0.1
+Leo IV -
++1.0 0.6
+0.6
+-
++3.3 1.1
+1.3 - -
++2.3 2.0
+1.3
+-
++0.5 0.3
+0.3
+-
++1.8 0.8
+0.8
+-
++6.2 2.3
+2.1
+-
++0.9 0.7
+0.6
+-
++76.7 8.5
+9.3
+-
++16.1 11.7
+37.5
+-
++7.2 0.6
+0.5 0.0 −0.1
+Leo V -
++1.1 0.6
+0.6
+-
++3.8 0.8
+0.9 - -
++2.3 1.0
+1.2
+-
++0.2 0.5
+0.7
+-
++1.9 0.7
+0.8
+-
++6.3 2.2
+2.1
+-
++0.6 0.6
+0.4
+-
++77.0 8.4
+9.2
+-
++6.2 5.0
+20.6
+-
++7.6 0.6
+0.5 0.1 0.0
+Leo T -
++1.1 0.6
+0.6
+-
++3.2 1.1
+1.0 - -
++1.4 1.6
+1.6 - -
++0.1 0.3
+0.4
+-
++1.8 0.8
+0.8
+-
++6.2 2.3
+2.1
+-
++1.0 0.6
+0.7
+-
++51.1 22.9
+14.9
+-
++41.9 21.6
+37.2
+-
++8.3 0.3
+0.3 −0.1 0.0
+Pisces II -
++1.1 0.6
+0.6
+-
++2.0 1.7
+0.9 - -
++0.2 2.9
+2.5 - -
++0.2 0.5
+0.5
+-
++1.7 0.8
+0.8
+-
++6.4 2.2
+2.1
+-
++1.1 0.6
+0.7
+-
++68.5 13.8
+11.7
+-
++209 166
+767
+-
++7.0 2.1
+1.0 0.0 −0.1
+Reticulum II -
++1.1 0.6
+0.6
+-
++3.3 1.1
+1.2 - -
++1.4 1.1
+1.7
+-
++0.2 0.5
+0.6
+-
++1.8 0.8
+0.8
+-
++6.3 2.2
+2.1
+-
++0.8 0.6
+0.5
+-
++78.9 7.0
+7.5
+-
++330 141
+252
+-
++8.0 0.8
+0.5 0.0 0.0
+Segue 1 -
++1.0 0.6
+0.6
+-
++2.5 1.4
+1.1 - -
++0.9 2.5
+2.4
+-
++0.3 0.3
+0.3
+-
++1.6 0.9
+0.8
+-
++6.2 2.3
+2.1
+-
++1.6 0.3
+0.6
+-
++70.6 12.0
+8.2
+-
++2064 855
+1528
+-
++7.9 1.6
+0.7 0.0 0.0
+Segue 2 -
++1.2 0.5
+0.6
+-
++3.1 1.2
+1.3 - -
++1.4 1.2
+1.7 - -
++0.4 0.5
+0.4
+-
++1.8 0.8
+0.8
+-
++6.4 2.2
+2.1
+-
++0.7 0.7
+0.5
+-
++61.5 19.4
+21.7
+-
++131 119
+246
+-
++7.7 2.4
+0.7 0.1 0.2
+Triangulum II -
++1.1 0.6
+0.6
+-
++1.8 1.9
+1.3 - -
++2.4 2.3
+1.7 - -
++0.3 0.5
+0.5
+-
++1.7 0.9
+0.8
+-
++6.5 2.1
+2.2
+-
++0.8 0.7
+0.6
+-
++60.1 19.6
+16.3
+-
++0.3 0.3
+14.8
+-
++4.1 6.8
+3.0 0.1 0.0
+Tucana 2 -
++1.1 0.6
+0.6
+-
++2.7 1.1
+0.6 - -
++1.3 1.6
+1.8
+-
++0.0 0.3
+0.4
+-
++1.7 0.9
+0.8
+-
++6.3 2.3
+2.1
+-
++1.0 0.6
+0.7
+-
++70.9 12.2
+11.1
+-
++1856 846
+1787
+-
++7.8 0.3
+0.4 −0.2 0.1
+Tucana 3 -
++1.1 0.6
+0.6
+-
++1.8 1.8
+1.2 - -
++2.4 3.0
+1.7 - -
++0.3 0.4
+0.4
+-
++1.7 0.8
+0.8
+-
++6.5 2.1
+2.2
+-
++0.9 0.7
+0.6
+-
++58.6 20.3
+19.4
+-
++4.5 4.5
+59.6
+-
++4.6 6.4
+2.3 0.0 0.0
+Tucana 4 -
++1.1 0.6
+0.6
+-
++2.5 1.4
+0.9 - -
++1.0 2.2
+2.1 - -
++0.0 0.4
+0.5
+-
++1.7 0.8
+0.8
+-
++6.3 2.3
+2.1
+-
++1.1 0.6
+0.7
+-
++70.1 12.8
+11.1
+-
++1103 652
+1593
+-
++7.5 1.2
+0.6 0.1 0.0
+Ursa Major I -
++1.1 0.6
+0.6
+-
++3.3 1.1
+1.1 - -
++1.6 1.9
+1.7
+-
++0.6 0.2
+0.2
+-
++1.7 0.8
+0.8
+-
++6.2 2.3
+2.1
+-
++1.1 0.6
+0.7
+-
++80.2 6.2
+6.6
+-
++725 265
+395
+-
++8.2 0.2
+0.3 0.1 0.3
+Ursa Major II -
++1.2 0.5
+0.6
+-
++3.6 0.9
+1.1 - -
++1.3 1.0
+1.5 - -
++0.2 0.7
+0.5
+-
++1.8 0.8
+0.8
+-
++6.3 2.2
+2.1
+-
++0.8 0.6
+0.5
+-
++79.4 6.7
+6.9
+-
++977 433
+834
+-
++8.4 0.4
+0.4 −0.1 0.2
+Willman 1 -
++1.0 0.6
+0.6
+-
++3.2 1.1
+1.1 - -
++1.5 1.7
+1.9
+-
++0.3 0.3
+0.5
+-
++1.8 0.8
+0.9
+-
++6.4 2.2
+2.1
+-
++1.2 0.5
+0.6
+-
++75.0 9.7
+9.6
+-
++317 160
+277
+-
++8.1 1.1
+0.6 0.1 −0.1
+Notes. Errors correspond to the 1 σrange of our analysis. The names of galaxies in bold are those that have the number of kinematic samples greater than 20 stars.
+a The Bayes factor (BF) is de ﬁned by P(MQ=1|D)/P(Mbest|D) for subscript “1,” and = ¢(∣ ) ( ∣ )PM D PM DQq best for subscript “2,” respectively, where = ¢(∣ )PM DQq , P(MQ=1|D), and P(Mbest|D) are the mean posterior
+probabilities of mass models with spherical dark matter halo (Q = 1), with nonspherical dark matter halo (the axial ratio is ﬁxed as a projected stellar axial ratio: = ¢Q q ), and with the best posteriors respectively. In each
+model, we keep the stellar distributions are axisymmetric shape, that is, stellar axial ratios are not unity. D indicates observational data for each dSph. To con ﬁrm this BF analysis, Akaike ’s information criterion (AIC)
+with a correction for small sample sizes (c-AIC) is also introduced. We compute c-AIC 1 and c-AIC 2 (subscript number is the same as the BF ) for all dSphs and ﬁnd that c-AIC 1 ∼ c-AIC2 ∼ 4 < 6, which means that
+c-AIC analysis can follow the results from the BF analysis.
+12
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 13 =====
+Appendix B
+Posterior Probability Density Functions
+Here, we show the results of parameter estimations based on an
+MCMC ﬁtting analysis. Figures B1 and B2 display the posterior
+probability density function (pdfs) for Antlia 2, Boötes I, Canes
+Venatici I, Coma Berenices, Crater 2, Eridanus II, Segue 1, and
+Willman 1 as the representative satellites, which have the largest
+kinematics samples among our sample in this work.
+Figure B1. Posterior probability distributions for the ﬁtting parameters for Antlia 2 (top left ), Boötes I (top right ), Canes Venatici I (bottom left ), and
+Coma Berenices (bottom right ). The dashed lines in each histogram represent the median and 68% con ﬁdence values. The contours in each panel denote the
+68%, 95%, and 99.7% (from dark to light ) conﬁdence regions. The black stars and vertical solid lines show the parameters with the highest posteriors. Units of bhalo
+and ρ0 are [pc] and [Me pc −3], respectively.
+13
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 14 =====
+ORCID iDs
+Kohei Hayashi https://orcid.org/0000-0002-8758-8139
+Yutaka Hirai https://orcid.org/0000-0002-5661-033X
+Masashi Chiba https://orcid.org/0000-0002-9053-860X
+Tomoaki Ishiyama https://orcid.org/0000-0002-5316-9171
+References
+Applebaum, E., Brooks, A. M., Christensen, C. R., et al. 2021, ApJ, 906, 96
+Battaglia, G., & Nipoti, C. 2022, NatAs, 6, 659
+Battaglia, G., Taibi, S., Thomas, G. F., & Fritz, T. K. 2022, A&A, 657, A54
+Behroozi, P. S., Wechsler, R. H., & Wu, H.-Y. 2013, ApJ, 762, 109
+Belokurov, V., Walker, M. G., Evans, N. W., et al. 2009, MNRAS, 397, 1748
+Belokurov, V., Walker, M. G., Evans, N. W., et al. 2010, ApJL, 712, L103
+Belokurov, V., Zucker, D. B., Evans, N. W., et al. 2007, ApJ, 654, 897
+Binney, J., & Mamon, G. A. 1982, MNRAS, 200, 361
+Binney, J., & Tremaine, S. 2008, Galactic Dynamics (2nd ed.; Princeton, NJ:
+Princeton University Press )
+Borukhovetskaya, A., Navarro, J. F., Errani, R., & Fattahi, A. 2022, MNRAS,
+512, 5247
+Boylan-Kolchin, M., Bullock, J. S., & Kaplinghat, M. 2011, MNRAS, 415, L40
+Boylan-Kolchin, M., Bullock, J. S., & Kaplinghat, M. 2012, MNRAS,
+422, 1203
+Brown, A. G. A., Vallenari, A., (Gaia Collaboration ), et al. 2021, A&A,
+649, A1
+Bullock, J. S., & Boylan-Kolchin, M. 2017, ARA&A, 55, 343
+Caldwell, N., Walker, M. G., Mateo, M., et al. 2017, ApJ, 839, 20
+Cappellari, M. 2008, MNRAS, 390, 71
+Chiti, A., Frebel, A., Ji, A. P., et al. 2023, AJ, 165, 55
+Chiti, A., Simon, J. D., Frebel, A., et al. 2022, ApJ, 939, 41
+Figure B2. Same as Figure B1, but for Crater 2 (top left ), Eridanus II (top right ), Segue 1 (bottom left ), and Willman 1 (bottom right ).
+14
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.
+===== PAGE 15 =====
+Correa, C. A. 2021, MNRAS, 503, 920
+Dall’Ora, M., Clementini, G., Kinemuchi, K., et al. 2006, ApJL, 653, L109
+de Jong, J. T. A., Harris, J., Coleman, M. G., et al. 2008, ApJ, 680, 1112
+de Jong, J. T. A., Martin, N. F., Rix, H.-W., et al. 2010, ApJ, 710, 1664
+Di Cintio, A., Mostoghiu, R., Knebe, A., & Navarro, J. F. 2021, MNRAS,
+506, 531
+Drlica-Wagner, A., Bechtol, K., Rykoff, E. S., et al. 2015, ApJ, 813, 109
+Ebisu, T., Ishiyama, T., & Hayashi, K. 2022, PhRvD, 105, 023016
+Erkal, D., Li, T. S., Koposov, S. E., et al. 2018, MNRAS, 481, 3148
+Errani, R., & Navarro, J. F. 2021, MNRAS, 505, 18
+Errani, R., Penarrubia, J., & Tormen, G. 2015, MNRAS, 449, L46
+Errani, R., Peñarrubia, J., & Walker, M. G. 2018, MNRAS, 481, 5073
+Evans, N. W., An, J., & Walker, M. G. 2009, MNRAS, 393, L50
+Faerman, Y., Sternberg, A., & McKee, C. F. 2013, ApJ, 777, 119
+Fattahi, A., Navarro, J. F., Frenk, C. S., et al. 2018, MNRAS, 476, 3816
+Foreman-Mackey, D. 2016, JOSS, 1, 24
+Frebel, A., & Norris, J. E. 2015, ARA&A, 53, 631
+Fukushige, T., & Makino, J. 1997, ApJL, 477, L9
+Genina, A., Read, J. I., Fattahi, A., & Frenk, C. S. 2022, MNRAS, 510, 2186
+Genina, A., Read, J. I., Frenk, C. S., et al. 2020, MNRAS, 498, 144
+Geringer-Sameth, A., Koushiappas, S. M., & Walker, M. 2015, ApJ, 801, 74
+Grand, R. J. J., Marinacci, F., Pakmor, R., et al. 2021, MNRAS, 507, 4953
+Greco, C., Dall ’Ora, M., Clementini, G., et al. 2008, ApJL, 675, L73
+Harris, C. R., Millman, K. J., van der Walt, S. J., et al. 2020, Natur, 585, 357
+Hastings, W. K. 1970, Bimka, 57, 97
+Hayashi, K., & Chiba, M. 2012, ApJ, 755, 145
+Hayashi, K., & Chiba, M. 2015, ApJ, 810, 22
+Hayashi, K., Chiba, M., & Ishiyama, T. 2020, ApJ, 904, 45
+Hayashi, K., Ferreira, E. G. M., & Chan, H. Y. J. 2021a, ApJL, 912, L3
+Hayashi, K., Ibe, M., Kobayashi, S., Nakayama, Y., & Shirai, S. 2021b,
+PhRvD, 103, 023017
+Helmi, A., van Leeuwen, F., (Gaia Collaboration), et al. 2018, A&A, 616, A12
+Hernquist, L. 1990, ApJ, 356, 359
+Hirai, Y., Beers, T. C., Chiba, M., et al. 2022, MNRAS, 517, 4856
+Hubble, E. P. 1926, ApJ, 64, 321
+Hunter, J. D. 2007, CSE, 9, 90
+Ishiyama, T., & Ando, S. 2020, MNRAS, 492, 3662
+Ishiyama, T., Prada, F., Klypin, A. A., et al. 2021, MNRAS, 506, 4210
+Jenkins, S., Li, T. S., Pace, A. B., et al. 2021, ApJ, 920, 92
+Ji, A. P., Koposov, S. E., Li, T. S., et al. 2021, ApJ, 921, 32
+Jiang, F., Kaplinghat, M., Lisanti, M., & Slone, O. 2021, arXiv: 2108.03243
+Kaplinghat, M., Valli, M., & Yu, H.-B. 2019, MNRAS, 490, 231
+Kirby, E. N., Boylan-Kolchin, M., Cohen, J. G., et al. 2013a, ApJ, 770, 16
+Kirby, E. N., Cohen, J. G., Guhathakurta, P., et al. 2013b, ApJ, 779, 102
+Kirby, E. N., Cohen, J. G., Simon, J. D., et al. 2017, ApJ, 838, 83
+Kirby, E. N., Simon, J. D., & Cohen, J. G. 2015, ApJ, 810, 56
+Koposov, S. E., Belokurov, V., Torrealba, G., & Evans, N. W. 2015a, ApJ,
+805, 130
+Koposov, S. E., Casey, A. R., Belokurov, V., et al. 2015b, ApJ, 811, 62
+Kuehn, C., Kinemuchi, K., Ripepi, V., et al. 2008, ApJL, 674, L81
+Laevens, B. P. M., Martin, N. F., Bernard, E. J., et al. 2015a, ApJ, 813, 44
+Laevens, B. P. M., Martin, N. F., Ibata, R. A., et al. 2015b, ApJL, 802, L18
+Lazar, A., Bullock, J. S., Boylan-Kolchin, M., et al. 2020, MNRAS, 497, 2393
+Li, H., Hammer, F., Babusiaux, C., et al. 2021, ApJ, 916, 8
+Li, T. S., Simon, J. D., Drlica-Wagner, A., et al. 2017, ApJ, 838, 8
+Li, T. S., Simon, J. D., Kuehn, K., et al. 2018, ApJ, 866, 22
+Łokas, E. L. 2002, MNRAS, 333, 697
+Longeard, N., Martin, N., Starkenburg, E., et al. 2018, MNRAS, 480, 2609
+Lovell, M. R., Pillepich, A., Genel, S., et al. 2018, MNRAS, 481, 1950
+Lu, P., Takhistov, V., Gelmini, G. B., et al. 2021, ApJL, 908, L23
+Mamon, G. A., Biviano, A., & Boué, G. 2013, MNRAS, 429, 3079
+Mamon, G. A., Chevalier, J., Romanowsky, A. J., & Wojtak, R. 2015, in IAU
+Symp. 311, Galaxy Masses as Constraints of Formation Models, ed.
+M. Cappellari & S. Courteau (Cambridge: Cambridge University Press ), 16
+Martin, N. F., de Jong, J. T. A., & Rix, H.-W. 2008, ApJ, 684, 1075
+Martin, N. F., Nidever, D. L., Besla, G., et al. 2015, ApJL, 804, L5
+Martínez-Vázquez, C. E., Vivas, A. K., Gurevich, M., et al. 2019, MNRAS,
+490, 2183
+Mateo, M. L. 1998, ARA&A, 36, 435
+McConnachie, A. W. 2012, AJ, 144, 4
+McConnachie, A. W., & Venn, K. A. 2020, RNAAS, 4, 229
+Mercado, F. J., Bullock, J. S., Boylan-Kolchin, M., et al. 2021, MNRAS,
+501, 5121
+Metropolis, N., Rosenbluth, A. W., Rosenbluth, M. N., Teller, A. H., &
+Teller, E. 1953, JChPh, 21, 1087
+Miyoshi, T., & Chiba, M. 2020, ApJ, 905, 109
+Moore, B., Quinn, T., Governato, F., Stadel, J., & Lake, G. 1999, MNRAS,
+310, 1147
+Moreno, J., Danieli, S., Bullock, J. S., et al. 2022, NatAs, 6, 496
+Moster, B. P., Naab, T., & White, S. D. M. 2013, MNRAS, 428, 3121
+Muñoz, R. R., Côté, P., Santana, F. A., et al. 2018, ApJ, 860, 66
+Nishikawa, H., Boddy, K. K., & Kaplinghat, M. 2020, PhRvD, 101, 063009
+Peñarrubia, J., Navarro, J. F., & McConnachie, A. W. 2008, ApJ, 673, 226
+Plummer, H. C. 1911, MNRAS, 71, 460
+Read, J. I., Mamon, G. A., Vasiliev, E., et al. 2021, MNRAS, 501, 978
+Read, J. I., & Steger, P. 2017, MNRAS, 471, 4541
+Read, J. I., Walker, M. G., & Steger, P. 2019, MNRAS, 484, 1401
+Rey, M. P., Pontzen, A., Agertz, O., et al. 2019, ApJL, 886, L3
+Richardson, T., & Fairbairn, M. 2014, MNRAS, 441, 1584
+Richstone, D. O., & Tremaine, S. 1984, ApJ, 286, 27
+Romanowsky, A. J., & Kochanek, C. S. 1997, MNRAS, 287, 35
+Sameie, O., Chakrabarti, S., Yu, H.-B., et al. 2020, arXiv: 2006.06681
+Simard, L., Ellerbroek, B., & Bhatia, R. 2016, Proc. SPIE , 9908, 99081V
+Simon, J. D. 2019, ARA&A, 57, 375
+Simon, J. D., & Geha, M. 2007, ApJ, 670, 313
+Simon, J. D., Geha, M., Minor, Q. E., et al. 2011, ApJ, 733, 46
+Simon, J. D., Li, T. S., Drlica-Wagner, A., et al. 2017, ApJ, 838, 11
+Simon, J. D., Li, T. S., Erkal, D., et al. 2020, ApJ, 892, 137
+Springel, V., Pakmor, R., Pillepich, A., et al. 2018, MNRAS, 475, 676
+Springel, V., Wang, J., Vogelsberger, M., et al. 2008, MNRAS, 391, 1685
+Takada, M., Ellis, R. S., Chiba, M., et al. 2014, PASJ, 66, R1
+Tamura, N., Takato, N., Shimono, A., et al. 2016, Proc. SPIE , 9908, 99081M
+Tempel, E., & Tenjes, P. 2006, MNRAS, 371, 1269
+Tollet, E., Macciò, A. V., Dutton, A. A., et al. 2016, MNRAS, 456, 3542
+Torrealba, G., Belokurov, V., Koposov, S. E., et al. 2019, MNRAS, 488, 2743
+Torrealba, G., Koposov, S. E., Belokurov, V., & Irwin, M. 2016, MNRAS,
+459, 2370
+Virtanen, P., Gommers, R., Oliphant, T. E., et al. 2020, NatMe, 17, 261
+Vogelsberger, M., Genel, S., Springel, V., et al. 2014, MNRAS, 444, 1518
+Wadekar, D., & Farrar, G. R. 2021, PhRvD, 103, 123028
+Walker, M. G., Mateo, M., & Olszewski, E. W. 2009, AJ, 137, 3100
+Watkins, L. L., van de Ven, G., den Brok, M., & van den Bosch, R. C. E. 2013,
+MNRAS, 436, 2598
+Wetzel, A. R., Hopkins, P. F., Kim, J.-H., et al. 2016, ApJL, 827, L23
+Wheeler, C., Pace, A. B., Bullock, J. S., et al. 2017, MNRAS, 465, 2420
+Willman, B., Geha, M., Strader, J., et al. 2011, AJ, 142, 128
+Wolf, J., Martinez, G. D., Bullock, J. S., et al. 2010, MNRAS, 406, 1220
+Woo, J., Courteau, S., & Dekel, A. 2008, MNRAS, 390, 1453
+Zhao, H. 1996, MNRAS, 278, 488
+Zoutendijk, S. L., Brinchmann, J., Bouché, N. F., et al. 2021, A&A, 651, A80
+15
+The Astrophysical Journal, 953:185 (15pp), 2023 August 20 Hayashi et al.

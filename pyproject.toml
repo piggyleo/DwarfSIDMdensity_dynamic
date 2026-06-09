@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hayashi-jeans"
+version = "0.1.0"
+description = "Pluggable Jeans/likelihood framework for reproducing Hayashi et al. 2023 dwarf-galaxy halo fits."
+requires-python = ">=3.10"
+dependencies = [
+  "astropy",
+  "colossus",
+  "emcee",
+  "numpy",
+  "pandas",
+  "scipy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

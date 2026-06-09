@@ -1,0 +1,48 @@
+ref_id,citation_short,journal,volume,page,vizier_source_candidate,vizier_status,note
+1,Torrealba et al. 2019,MNRAS,488,2743,J/MNRAS/488/2743,available,
+2,Munoz et al. 2018,ApJ,860,66,J/ApJ/860/66,not_found,
+3,Jenkins et al. 2021,ApJ,920,92,J/ApJ/920/92,available,
+4,Dall'Ora et al. 2006,ApJL,653,L109,J/ApJ/653/L109,not_found,
+5,Kirby et al. 2013b,ApJ,779,102,J/ApJ/779/102,available,
+6,Kuehn et al. 2008,ApJL,674,L81,J/ApJ/674/L81,available,
+7,Greco et al. 2008,ApJL,675,L73,J/ApJ/675/L73,not_found,
+8,Belokurov et al. 2007,ApJ,654,897,J/ApJ/654/897,not_found,
+9,Ji et al. 2021,ApJ,921,32,J/ApJ/921/32,available,
+10,Torrealba et al. 2016,MNRAS,459,2370,J/MNRAS/459/2370,not_found,
+11,Laevens et al. 2015a,ApJ,813,44,J/ApJ/813/44,not_found,
+12,Longeard et al. 2018,MNRAS,480,2609,J/MNRAS/480/2609,not_found,
+13,Zoutendijk et al. 2021,A&A,651,A80,J/A+A/651/A80,request_error,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Read timed out."
+14,Li et al. 2017,ApJ,838,8,J/ApJ/838/8,not_found,
+15,Chiti et al. 2022,ApJ,939,41,J/ApJ/939/41,not_found,
+16,Drlica-Wagner et al. 2015,ApJ,813,109,J/ApJ/813/109,not_found,
+17,Martinez-Vazquez et al. 2019,MNRAS,490,2183,J/MNRAS/490/2183,not_found,
+18,Simon et al. 2020,ApJ,892,137,J/ApJ/892/137,request_error,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/asu-tsv?-source=J/ApJ/892/137&-out.max=1 (Caused by ProxyError('Cannot connect to proxy.', TimeoutError('_ssl.c:985: The handshake operation timed out')))"
+19,Martin et al. 2008,ApJ,684,1075,J/ApJ/684/1075,not_found,
+20,Koposov et al. 2015b,ApJ,811,62,J/ApJ/811/62,not_found,
+21,Kirby et al. 2015,ApJ,810,56,J/ApJ/810/56,not_found,
+22,Martin et al. 2015,ApJL,804,L5,J/ApJ/804/L5,not_found,
+23,de Jong et al. 2010,ApJ,710,1664,J/ApJ/710/1664,available,
+24,de Jong et al. 2008,ApJ,680,1112,J/ApJ/680/1112,not_found,
+25,Belokurov et al. 2010,ApJL,712,L103,J/ApJ/712/L103,not_found,
+26,Koposov et al. 2015a,ApJ,805,130,J/ApJ/805/130,not_found,
+27,Simon et al. 2011,ApJ,733,46,J/ApJ/733/46,available,
+28,Belokurov et al. 2009,MNRAS,397,1748,J/MNRAS/397/1748,available,
+29,Kirby et al. 2013a,ApJ,770,16,J/ApJ/770/16,available,
+30,Laevens et al. 2015b,ApJL,802,L18,J/ApJ/802/L18,not_found,
+31,Kirby et al. 2017,ApJ,838,83,J/ApJ/838/83,available,
+32,Simon et al. 2017,ApJ,838,11,J/ApJ/838/11,available,
+33,Simon and Geha 2007,ApJ,670,313,J/ApJ/670/313,not_found,
+34,Willman et al. 2011,AJ,142,128,J/AJ/142/128,not_found,
+35,Chiti et al. 2023,AJ,165,55,J/AJ/165/55,available,
+
+# COLUMN_NOTES_BEGIN
+# 说明：以下注释行解释本 CSV 中每一列的含义；程序读取时建议使用 pd.read_csv(path, comment="#")。
+# ref_id: Hayashi 参考文献编号。
+# citation_short: 参考文献简写。
+# journal: 期刊名称。
+# volume: 期刊卷号。
+# page: 文章起始页或编号。
+# vizier_source_candidate: 尝试匹配的 VizieR 目录标识。
+# vizier_status: VizieR 目录可用性状态。
+# note: 审计或处理过程中的简短备注。
+# COLUMN_NOTES_END
