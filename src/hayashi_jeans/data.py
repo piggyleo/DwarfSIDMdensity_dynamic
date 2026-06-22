@@ -61,15 +61,21 @@ class GalaxyData:
 def load_galaxy_data(
     galaxy_csv: str | Path,
     *,
-    member_flags: tuple[int, ...] = (1,),
+    model_member_flags: tuple[int, ...] = (1, 2),
     require_velocity: bool = True,
     structural_centers_csv: str | Path | None = None,
 ) -> GalaxyData:
-    """Load one per-galaxy CSV and select the default Hayashi-equivalent sample.
+    """Load one per-galaxy CSV and select the default modeling sample.
 
     The project CSV files contain one ``global`` row and many ``star`` rows. The
-    default selector intentionally uses only hard members, ``member_flag == 1``,
-    because the low-risk set has counts matching Hayashi Table 1 under that rule.
+    preferred selector uses ``model_member_flag`` when present:
+
+    - ``1``: baseline clean modeling member.
+    - ``2``: included by default but tagged for sensitivity tests.
+    - ``3``: excluded from the simple Jeans baseline.
+
+    Files that have not yet been migrated to ``model_member_flag`` should fail
+    fast rather than silently falling back to a historical selector.
     """
 
     path = Path(galaxy_csv)
@@ -83,8 +89,12 @@ def load_galaxy_data(
     global_row = global_rows.iloc[0]
 
     stars = table.loc[table["row_kind"] == "star"].copy()
-    stars["member_flag"] = pd.to_numeric(stars["member_flag"], errors="coerce")
-    stars = stars[stars["member_flag"].isin(member_flags)].copy()
+    if "model_member_flag" not in stars.columns:
+        raise ValueError(
+            f"{path} is missing model_member_flag; migrate the galaxy table before modeling"
+        )
+    stars["model_member_flag"] = pd.to_numeric(stars["model_member_flag"], errors="coerce")
+    stars = stars[stars["model_member_flag"].isin(model_member_flags)].copy()
 
     numeric_cols = [
         "ra_deg",

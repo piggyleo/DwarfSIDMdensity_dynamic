@@ -2,6 +2,26 @@
 
 本文记录 `scripts/run_galaxy_nautilus.py` 的常用调用方式。该脚本支持用 `--galaxy` 自动选择星系数据、结构中心、默认输出文件名，并默认使用自适应系统速度先验。
 
+## 0. 数据读取口径
+
+`run_galaxy_nautilus.py` 通过 `hayashi_jeans.data.load_galaxy_data()` 读取每星系 CSV。
+
+当前默认规则是：
+
+```text
+读取 model_member_flag in [1, 2]
+```
+
+其中：
+
+```text
+model_member_flag = 1  baseline clean member
+model_member_flag = 2  默认纳入，但需要敏感性测试的成员
+model_member_flag = 3  不进入默认 Jeans 建模
+```
+
+所有 27 个星系都已迁移到 `model_member_flag`。其中 14 个统一试分类星系的主 CSV `star` 行已经是一颗唯一恒星一行；多历元速度、跨源去重和速度变量排除已在星表整理阶段完成。冻结备用星系的科学成员样本未改变，只新增了 `model_member_flag` 以满足统一读取接口。缺少 `model_member_flag` 时 loader 会报错，这是预期行为。
+
 当前 likelihood mode 包括：
 
 ```text
@@ -110,18 +130,30 @@ python -u scripts/run_galaxy_nautilus.py \
   --seed 20260526
 ```
 
-默认输出文件会自动包含星系名：
+默认输出 stem 会包含星系名和 halo 模型，不再包含采样器名称。默认
+`--halo-model generalized-hernquist` 时：
 
 ```text
-outputs/eridanus_ii_nautilus_chain.csv
-outputs/diagnostics/eridanus_ii_nautilus_sampler.h5
+outputs/eridanus_2_generalized_hernquist_chain.csv
+outputs/diagnostics/eridanus_2_generalized_hernquist_sampler.h5
 ```
+
+使用 `--halo-model sidm` 时，默认改为：
+
+```text
+outputs/eridanus_2_sidm_chain.csv
+outputs/diagnostics/eridanus_2_sidm_sampler.h5
+outputs/figures/eridanus_2_sidm_density_profile.png
+outputs/figures/eridanus_2_sidm_corner.png
+```
+
+可以继续用 `--output-name` 覆盖共同 stem。
 
 如果手动指定输出路径，文件名应包含当前星系 slug，例如：
 
 ```bash
---chain-output outputs/eridanus_ii_nautilus_chain.csv \
---checkpoint-output outputs/diagnostics/eridanus_ii_nautilus_sampler.h5
+--chain-output outputs/eridanus_2_generalized_hernquist_chain.csv \
+--checkpoint-output outputs/diagnostics/eridanus_2_generalized_hernquist_sampler.h5
 ```
 
 ## 5. 恢复采样
@@ -157,13 +189,13 @@ python scripts/run_galaxy_nautilus.py \
 默认读取：
 
 ```text
-outputs/eridanus_ii_nautilus_chain.csv
+outputs/eridanus_2_generalized_hernquist_chain.csv
 ```
 
 默认写出：
 
 ```text
-outputs/figures/eridanus_ii_nautilus_density_profile.png
+outputs/figures/eridanus_2_generalized_hernquist_density_profile.png
 ```
 
 如果要指定作图时读取的 chain 文件，用 `--chain-output`。在 `--mode plot` / `--mode corner` 中，这个参数表示输入 chain 路径：
@@ -189,7 +221,7 @@ python scripts/run_galaxy_nautilus.py \
 默认写出：
 
 ```text
-outputs/figures/eridanus_ii_nautilus_corner.png
+outputs/figures/eridanus_2_generalized_hernquist_corner.png
 ```
 
 指定输入 chain 和输出 corner 文件：
@@ -365,4 +397,70 @@ python -u scripts/run_galaxy_nautilus.py \
 --galaxy "Willman 1"
 --galaxy "Eridanus II"
 --galaxy "Coma Berenices"
+```
+
+## 11. 批量运行全部 SIDM 星系
+
+批量配置位于：
+
+```text
+config/sidm_galaxies.tsv
+```
+
+采样和作图由同一个 Slurm array task 顺序执行：
+
+```text
+scripts/slurm_fit_all_sidm.sh
+```
+
+驱动脚本将 27 个目标拆成每批 3 个：
+
+```bash
+scripts/submit_all_sidm.sh
+```
+
+每批使用 `sbatch --wait`。当前批的 3 个星系全部结束后，才提交下一批，因此
+Slurm 中最多登记和运行 3 个目标任务。每个 task 在采样成功后立即生成 density
+profile 和 corner；如果当前批失败或超时，驱动脚本停止，不再提交后续批次。
+
+查看运行状态：
+
+```bash
+squeue -u "$USER"
+
+sacct -j <fit_job_id> \
+  --format=JobID,State,Elapsed,MaxRSS,ExitCode
+```
+
+如果 task `3,8,17` 超时，只恢复并重跑这些 checkpoint，同时重新提交对应作图：
+
+```bash
+scripts/resubmit_sidm_tasks.sh 3,8,17 04:00:00
+```
+
+第二个参数是新的采样时间上限；省略时默认使用 `04:00:00`。
+
+如果分批提交因某个批次失败而停止，可以在处理失败 task 后，从后续编号继续：
+
+```bash
+scripts/submit_all_sidm.sh 10
+```
+
+这表示从 task 10 继续到 task 27。也可以指定起止范围：
+
+```bash
+scripts/submit_all_sidm.sh 10 18
+```
+
+不传参数时仍执行全部 task：
+
+```bash
+scripts/submit_all_sidm.sh
+```
+
+日志文件按 array job 和 task 编号保存：
+
+```text
+logs/sidm_fit_plot_<array-job-id>_<task-id>.out
+logs/sidm_fit_plot_<array-job-id>_<task-id>.err
 ```

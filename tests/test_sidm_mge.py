@@ -2,11 +2,12 @@ import numpy as np
 from scipy.special import erf
 from scipy.integrate import cumulative_trapezoid
 
-from hayashi_jeans.halos import SIDMPSIDM25Halo
+from hayashi_jeans.halos import SIDMPSIDM25Halo, SpheroidallyStratifiedMGEHalo
 from hayashi_jeans.mge import (
     decompose_density_mge_auto,
     mge_density_relative_errors,
 )
+from hayashi_jeans.tracer import AxisymmetricMGETracer
 
 
 def mge_enclosed_mass(radius: np.ndarray, amplitudes: np.ndarray, sigmas: np.ndarray) -> np.ndarray:
@@ -58,3 +59,24 @@ def test_validated_mge_represents_sidm_density_and_mass():
         fitted_mass = mge_enclosed_mass(radius, mge.amplitudes, mge.sigmas_major_pc)
         mass_errors = np.abs(fitted_mass - true_mass) / np.maximum(np.abs(true_mass), 1.0e-300)
         assert np.percentile(mass_errors[20:], 95.0) < 0.05
+
+
+def test_signed_mge_descriptors_preserve_amplitude_signs():
+    amplitudes = np.array([2.0, -0.25])
+    sigmas = np.array([10.0, 30.0])
+    radius = np.array([0.0, 5.0, 20.0])
+    expected = np.exp(-0.5 * (radius[:, None] / sigmas) ** 2) @ amplitudes
+
+    halo = SpheroidallyStratifiedMGEHalo(
+        q=0.8,
+        amplitudes_msun_pc3=amplitudes,
+        sigmas_major_pc=sigmas,
+    )
+    np.testing.assert_allclose(halo.density_at_ellipsoidal_radius(radius), expected)
+
+    tracer = AxisymmetricMGETracer(
+        q_intrinsic=0.8,
+        amplitudes=amplitudes,
+        sigmas_major_pc=sigmas,
+    )
+    np.testing.assert_allclose(tracer.density(radius, np.zeros_like(radius)), expected)

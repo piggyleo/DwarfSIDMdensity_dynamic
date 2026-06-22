@@ -19,17 +19,18 @@ for path in (PROJECT_ROOT, PROJECT_ROOT / "src"):
         sys.path.insert(0, str(path))
 
 from hayashi_jeans.data import load_galaxy_data
-from hayashi_jeans.halos import SIDMPSIDM25Halo
+from hayashi_jeans.halos import SIDMPSIDM25Halo, SpheroidallyStratifiedMGEHalo
 from hayashi_jeans.likelihood import GaussianVelocityLikelihood
 from hayashi_jeans.mge import (
     MGEPhysicalityConfig,
     decompose_density_mge,
     fit_galaxy_mges_for_halo,
     mge_density_relative_errors,
-    mge_sigma_los2_for_halo,
+    mge_los_second_moment,
 )
 from hayashi_jeans.model import build_projector
 from hayashi_jeans.params import HayashiParameters
+from hayashi_jeans.tracer import AxisymmetricMGETracer
 
 
 def mge_enclosed_mass(radius: np.ndarray, amplitudes: np.ndarray, sigmas: np.ndarray) -> np.ndarray:
@@ -42,6 +43,18 @@ def mge_enclosed_mass(radius: np.ndarray, amplitudes: np.ndarray, sigmas: np.nda
     return 4.0 * np.pi * np.sum(np.asarray(amplitudes)[None, :] * term, axis=1)
 
 
+def relative_error_summary(prefix: str, approximate: np.ndarray, reference: np.ndarray) -> dict[str, float]:
+    error = np.abs(np.asarray(approximate) - np.asarray(reference)) / np.maximum(
+        np.abs(reference),
+        1.0e-300,
+    )
+    return {
+        f"{prefix}_median": float(np.median(error)),
+        f"{prefix}_p95": float(np.percentile(error, 95.0)),
+        f"{prefix}_max": float(np.max(error)),
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--galaxy-csv", default=str(PROJECT_ROOT / "data/galaxies/27_Willman_1.csv"))
@@ -50,7 +63,8 @@ def main() -> None:
     parser.add_argument("--strict-taus", default="0.5,1.08")
     parser.add_argument("--output", default=str(PROJECT_ROOT / "outputs/diagnostics/sidm_mge_validation.csv"))
     parser.add_argument("--n-gauss", type=int, default=60)
-    parser.add_argument("--strict-epsrel", type=float, default=3.0e-2)
+    parser.add_argument("--strict-epsrel", type=float, default=1.0e-2)
+    parser.add_argument("--strict-factor", type=float, default=20.0)
     args = parser.parse_args()
 
     galaxy = load_galaxy_data(args.galaxy_csv, structural_centers_csv=args.centers_csv)
@@ -84,7 +98,7 @@ def main() -> None:
             analytic,
             radius,
         )
-        _q_star, _tracer_mge, selected_mge = fit_galaxy_mges_for_halo(
+        q_star, tracer_mge, selected_mge = fit_galaxy_mges_for_halo(
             galaxy,
             halo=halo,
             inclination_rad=np.deg2rad(75.0),
@@ -137,39 +151,104 @@ def main() -> None:
                 inclination_rad=inclination_rad,
                 systemic_velocity_kms=float(np.median(galaxy.velocity_kms)),
             )
-            strict_t0 = time.perf_counter()
-            strict_projector = build_projector(
+            original_t0 = time.perf_counter()
+            original_projector = build_projector(
                 galaxy,
                 params,
                 halo=halo,
-                zmax_factor=20.0,
-                los_factor=20.0,
+                zmax_factor=args.strict_factor,
+                los_factor=args.strict_factor,
                 epsrel=args.strict_epsrel,
             )
-            strict_sigma = strict_projector.sigma_los2_many(galaxy.x_pc, galaxy.y_pc)
-            row["strict_seconds"] = time.perf_counter() - strict_t0
+            original_sigma = original_projector.sigma_los2_many(galaxy.x_pc, galaxy.y_pc)
+            row["original_profile_strict_seconds"] = time.perf_counter() - original_t0
 
-            mge_t0 = time.perf_counter()
-            mge_sigma = mge_sigma_los2_for_halo(
+            mge_halo = SpheroidallyStratifiedMGEHalo(
+                q=halo.q,
+                amplitudes_msun_pc3=selected_mge.amplitudes,
+                sigmas_major_pc=selected_mge.sigmas_major_pc,
+            )
+            mge_tracer = AxisymmetricMGETracer(
+                q_intrinsic=q_star,
+                amplitudes=tracer_mge.amplitudes,
+                sigmas_major_pc=tracer_mge.sigmas_major_pc,
+            )
+            mge_profile_t0 = time.perf_counter()
+            mge_profile_projector = build_projector(
                 galaxy,
-                halo=halo,
+                params,
+                halo=mge_halo,
+                tracer=mge_tracer,
+                zmax_factor=args.strict_factor,
+                los_factor=args.strict_factor,
+                epsrel=args.strict_epsrel,
+            )
+            mge_profile_sigma = mge_profile_projector.sigma_los2_many(
+                galaxy.x_pc,
+                galaxy.y_pc,
+            )
+            row["mge_profile_strict_seconds"] = time.perf_counter() - mge_profile_t0
+
+            mge_jam_t0 = time.perf_counter()
+            mge_jam_sigma = mge_los_second_moment(
+                x_pc=galaxy.x_pc,
+                y_pc=galaxy.y_pc,
+                halo_mge=selected_mge,
+                tracer_mge=tracer_mge,
+                q_halo=halo.q,
+                q_star=q_star,
                 beta_z=beta_z,
                 inclination_rad=inclination_rad,
-                config=config,
-                check_physicality=False,
+                n_u=config.n_u,
             )
-            row["mge_seconds"] = time.perf_counter() - mge_t0
-            sigma_error = np.abs(mge_sigma - strict_sigma) / np.maximum(np.abs(strict_sigma), 1.0e-300)
-            row["sigma_los2_rel_error_median"] = float(np.median(sigma_error))
-            row["sigma_los2_rel_error_p95"] = float(np.percentile(sigma_error, 95.0))
-            row["sigma_los2_rel_error_max"] = float(np.max(sigma_error))
+            row["mge_jam_seconds"] = time.perf_counter() - mge_jam_t0
+            row.update(
+                relative_error_summary(
+                    "mge_profile_vs_original_sigma_los2_rel_error",
+                    mge_profile_sigma,
+                    original_sigma,
+                )
+            )
+            row.update(
+                relative_error_summary(
+                    "mge_jam_vs_mge_profile_sigma_los2_rel_error",
+                    mge_jam_sigma,
+                    mge_profile_sigma,
+                )
+            )
+            row.update(
+                relative_error_summary(
+                    "mge_jam_vs_original_sigma_los2_rel_error",
+                    mge_jam_sigma,
+                    original_sigma,
+                )
+            )
             likelihood = GaussianVelocityLikelihood(galaxy)
             systemic = params.systemic_velocity_kms
-            strict_log_likelihood = likelihood.log_likelihood(strict_sigma, systemic_velocity_kms=systemic)
-            mge_log_likelihood = likelihood.log_likelihood(mge_sigma, systemic_velocity_kms=systemic)
-            row["strict_log_likelihood"] = strict_log_likelihood
-            row["mge_log_likelihood"] = mge_log_likelihood
-            row["delta_log_likelihood"] = mge_log_likelihood - strict_log_likelihood
+            original_log_likelihood = likelihood.log_likelihood(
+                original_sigma,
+                systemic_velocity_kms=systemic,
+            )
+            mge_profile_log_likelihood = likelihood.log_likelihood(
+                mge_profile_sigma,
+                systemic_velocity_kms=systemic,
+            )
+            mge_jam_log_likelihood = likelihood.log_likelihood(
+                mge_jam_sigma,
+                systemic_velocity_kms=systemic,
+            )
+            row["original_profile_strict_log_likelihood"] = original_log_likelihood
+            row["mge_profile_strict_log_likelihood"] = mge_profile_log_likelihood
+            row["mge_jam_log_likelihood"] = mge_jam_log_likelihood
+            row["delta_log_likelihood_mge_profile_minus_original"] = (
+                mge_profile_log_likelihood - original_log_likelihood
+            )
+            row["delta_log_likelihood_mge_jam_minus_mge_profile"] = (
+                mge_jam_log_likelihood - mge_profile_log_likelihood
+            )
+            row["delta_log_likelihood_mge_jam_minus_original"] = (
+                mge_jam_log_likelihood - original_log_likelihood
+            )
 
         rows.append(row)
         print(pd.Series(row).to_string(), flush=True)

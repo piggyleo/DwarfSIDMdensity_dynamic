@@ -8,7 +8,7 @@ import numpy as np
 from scipy.integrate import quad
 
 from .halos import HaloModel
-from .tracer import AxisymmetricPlummerTracer, intrinsic_q_from_projected
+from .tracer import AxisymmetricMGETracer, AxisymmetricPlummerTracer, intrinsic_q_from_projected
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,7 @@ class AxisymmetricJeansProjector:
         inclination_rad: float,
         beta_z: float,
         halo: HaloModel,
+        tracer: AxisymmetricPlummerTracer | AxisymmetricMGETracer | None = None,
         zmax_factor: float = 80.0,
         los_factor: float = 80.0,
         epsrel: float = 3e-4,
@@ -41,7 +42,7 @@ class AxisymmetricJeansProjector:
         self.zmax_pc = zmax_factor * self.b_star_pc
         self.los_max_pc = los_factor * self.b_star_pc
         self.epsrel = float(epsrel)
-        self.tracer = AxisymmetricPlummerTracer(
+        self.tracer = tracer or AxisymmetricPlummerTracer(
             b_star_pc=self.b_star_pc,
             q_intrinsic=intrinsic_q_from_projected(qprime, inclination_rad),
         )
@@ -112,4 +113,3 @@ class AxisymmetricJeansProjector:
         p0 = self._vertical_pressure(r_cyl_pc, z_pc)
         p_plus = self._vertical_pressure(r_cyl_pc + step, z_pc)
         return (p_plus - p0) / step
-

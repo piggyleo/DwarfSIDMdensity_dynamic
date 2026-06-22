@@ -50,6 +50,14 @@ data/**
 !data/
 !data/**/
 !data/**/*.md
+# But ignore full backup snapshots under data, including their README notes
+data/galaxies_backup_*/
+data/galaxies_backup_*/**
+
+# Cluster / batch job output
+job_*.out
+job_*.err
+slurm-*.out
 
 # Generated figures, chains, diagnostics, and local matplotlib cache
 outputs/

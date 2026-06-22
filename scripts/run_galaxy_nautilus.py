@@ -27,6 +27,7 @@ for path in (PROJECT_ROOT, PROJECT_ROOT / "src", PROJECT_ROOT / "scripts"):
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy.stats import truncnorm
 
 from experiments.test_halo_force_grid_interpolation import RZMomentGridWithForceGrid
 from experiments.test_rz_moment_grid_interpolation import RZMomentGridProjector
@@ -64,6 +65,9 @@ class SlowParams:
 LIKELIHOOD_MODES = ("fast", "mge", "validation-halo", "validation-strict", "validation-convergence")
 HALO_MODELS = ("generalized-hernquist", "sidm")
 SIDM_PARAMETERIZATIONS = ("scale", "m200-c200", "m200-ludlow", "m200-ludlow-scatter")
+CONCENTRATION_SCATTER_PRIOR_MEAN = 0.0
+CONCENTRATION_SCATTER_PRIOR_STD = 3.0
+CONCENTRATION_SCATTER_PRIOR_TRUNCATION = 4.0
 
 PARAMETER_NAMES = [
     "q_halo",
@@ -146,6 +150,15 @@ def main() -> None:
     parser.add_argument("--halo-model", choices=HALO_MODELS, default="generalized-hernquist")
     parser.add_argument("--sidm-parameterization", choices=SIDM_PARAMETERIZATIONS, default="scale")
     parser.add_argument(
+        "--concentration-scatter-truncation",
+        type=float,
+        default=CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
+        help=(
+            "Symmetric truncation for the m200-ludlow-scatter Normal(0, 3^2) prior. "
+            "The default accepts -4 <= concentration_scatter_sigma <= 4."
+        ),
+    )
+    parser.add_argument(
         "--halo-redshift",
         type=float,
         default=None,
@@ -167,7 +180,7 @@ def main() -> None:
         "--output-name",
         default=None,
         help=(
-            "Optional common output filename stem. Defaults to <galaxy>_nautilus. "
+            "Optional common output filename stem. Defaults to <galaxy>_<halo-model>. "
             "Used only for outputs whose explicit --*-output path is not provided."
         ),
     )
@@ -285,6 +298,11 @@ def main() -> None:
     parser.add_argument("--smoke-n-like-max", type=float, default=120.0)
     parser.add_argument("--smoke-timeout", type=float, default=300.0)
     args = parser.parse_args()
+    if (
+        not np.isfinite(args.concentration_scatter_truncation)
+        or args.concentration_scatter_truncation <= 0.0
+    ):
+        parser.error("--concentration-scatter-truncation must be positive and finite")
     args.use_mge_physicality_check = not args.no_mge_physicality_check
     if args.mge_n_gauss_halo is None:
         args.mge_n_gauss_halo = 60 if args.halo_model == "sidm" else 45
@@ -305,7 +323,11 @@ def main() -> None:
     galaxy_csv = Path(args.galaxy_csv) if args.galaxy_csv is not None else resolve_galaxy_csv(args.galaxy)
     args.galaxy_csv = str(galaxy_csv)
     args.galaxy_slug = galaxy_slug_from_csv(galaxy_csv)
-    output_name = output_slug(args.output_name) if args.output_name is not None else f"{args.galaxy_slug}_nautilus"
+    output_name = (
+        output_slug(args.output_name)
+        if args.output_name is not None
+        else default_output_name(args.galaxy_slug, args.halo_model)
+    )
     if args.chain_output is None:
         args.chain_output = str(PROJECT_ROOT / "outputs" / f"{output_name}_chain.csv")
     if args.checkpoint_output is None:
@@ -333,6 +355,14 @@ def main() -> None:
     if args.halo_model == "sidm":
         print(f"sidm_parameterization={args.sidm_parameterization}")
         print(f"halo_redshift={args.halo_redshift}")
+        if args.sidm_parameterization == "m200-ludlow-scatter":
+            print(
+                "concentration_scatter_prior="
+                f"truncated_normal(mean={CONCENTRATION_SCATTER_PRIOR_MEAN:g}, "
+                f"std={CONCENTRATION_SCATTER_PRIOR_STD:g}, "
+                f"bounds=[{-args.concentration_scatter_truncation:g}, "
+                f"{args.concentration_scatter_truncation:g}])"
+            )
 
     if args.mode in ("point", "all"):
         run_point_check(galaxy, args)
@@ -406,6 +436,7 @@ def run_point_check(galaxy: GalaxyData, args: argparse.Namespace) -> None:
         systemic_velocity_bounds=args.systemic_velocity_bounds,
         halo_model=args.halo_model,
         sidm_parameterization=args.sidm_parameterization,
+        concentration_scatter_truncation=args.concentration_scatter_truncation,
     )
     print("single_point_check")
     print(f"vector={dict(zip(parameter_names_for(args.halo_model, args.sidm_parameterization), vector))}")
@@ -417,19 +448,24 @@ def run_point_check(galaxy: GalaxyData, args: argparse.Namespace) -> None:
 def validate_output_paths(args: argparse.Namespace) -> None:
     if args.allow_output_galaxy_mismatch:
         return
+    galaxy_filename_aliases = galaxy_output_slug_aliases(args.galaxy_slug)
     output_attrs = ("chain_output", "checkpoint_output", "figure_output", "corner_output")
     mismatched = []
     for attr in output_attrs:
         value = getattr(args, attr, None)
         if value is None:
             continue
-        if args.galaxy_slug not in Path(value).name:
+        filename_slug = output_slug(Path(value).stem)
+        padded_filename_slug = f"_{filename_slug}_"
+        if not any(f"_{alias}_" in padded_filename_slug for alias in galaxy_filename_aliases):
             mismatched.append((attr.replace("_", "-"), value))
     if mismatched:
         details = "\n".join(f"  --{name}: {value}" for name, value in mismatched)
+        accepted = ", ".join(sorted(galaxy_filename_aliases))
         raise ValueError(
-            f"output path(s) do not include resolved galaxy slug {args.galaxy_slug!r}:\n"
+            f"output path(s) do not include a recognized filename alias for galaxy slug {args.galaxy_slug!r}:\n"
             f"{details}\n"
+            f"Accepted filename aliases: {accepted}\n"
             "Use the default output paths, rename the files to include the galaxy slug, "
             "or pass --allow-output-galaxy-mismatch if this is intentional."
         )
@@ -439,7 +475,7 @@ def normalize_galaxy_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
 
 
-def galaxy_alias_keys(value: str) -> set[str]:
+def galaxy_alias_values(value: str) -> set[str]:
     raw = value.lower()
     aliases = {raw}
     roman_to_number = {
@@ -470,12 +506,48 @@ def galaxy_alias_keys(value: str) -> set[str]:
     for number, roman in number_to_roman.items():
         if spaced.endswith(number):
             aliases.add(spaced[: -len(number)] + roman)
-    return {normalize_galaxy_key(alias) for alias in aliases}
+    return aliases
+
+
+def galaxy_alias_keys(value: str) -> set[str]:
+    return {normalize_galaxy_key(alias) for alias in galaxy_alias_values(value)}
+
+
+def galaxy_output_slug_aliases(value: str) -> set[str]:
+    aliases = galaxy_alias_values(value)
+    return {
+        candidate
+        for alias in aliases
+        for candidate in (output_slug(alias), normalize_galaxy_key(alias))
+        if candidate
+    }
 
 
 def output_slug(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
     return slug or "galaxy"
+
+
+def default_output_name(galaxy_slug: str, halo_model: str) -> str:
+    return f"{numeric_galaxy_slug(galaxy_slug)}_{output_slug(halo_model)}"
+
+
+def numeric_galaxy_slug(value: str) -> str:
+    slug = output_slug(value)
+    roman_to_number = {
+        "viii": "8",
+        "vii": "7",
+        "vi": "6",
+        "v": "5",
+        "iv": "4",
+        "iii": "3",
+        "ii": "2",
+        "i": "1",
+    }
+    parts = slug.split("_")
+    if parts[-1] in roman_to_number:
+        parts[-1] = roman_to_number[parts[-1]]
+    return "_".join(parts)
 
 
 def resolve_galaxy_csv(galaxy: str) -> Path:
@@ -504,8 +576,8 @@ def resolve_galaxy_csv(galaxy: str) -> Path:
 def galaxy_slug_from_csv(galaxy_csv: Path) -> str:
     frame = pd.read_csv(galaxy_csv, comment="#", nrows=1)
     if frame.empty or "galaxy" not in frame:
-        return output_slug(re.sub(r"^\d+_", "", galaxy_csv.stem))
-    return output_slug(str(frame.loc[0, "galaxy"]))
+        return numeric_galaxy_slug(re.sub(r"^\d+_", "", galaxy_csv.stem))
+    return numeric_galaxy_slug(str(frame.loc[0, "galaxy"]))
 
 
 def validation_grid_settings(
@@ -886,6 +958,8 @@ def full_log_probability_vector(
     halo_model: str = "generalized-hernquist",
     sidm_parameterization: str = "scale",
     halo_run_context: HaloRunContext = HaloRunContext(),
+    include_prior_density: bool = True,
+    concentration_scatter_truncation: float = CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
 ) -> float:
     prior = log_prior_vector(
         galaxy,
@@ -893,6 +967,7 @@ def full_log_probability_vector(
         systemic_velocity_bounds=systemic_velocity_bounds,
         halo_model=halo_model,
         sidm_parameterization=sidm_parameterization,
+        concentration_scatter_truncation=concentration_scatter_truncation,
     )
     if not np.isfinite(prior):
         return -np.inf
@@ -930,7 +1005,8 @@ def full_log_probability_vector(
             )
         except (FloatingPointError, ValueError, ZeroDivisionError, RuntimeError):
             return -np.inf
-        return prior + GaussianVelocityLikelihood(galaxy).log_likelihood(
+        prior_contribution = prior if include_prior_density else 0.0
+        return prior_contribution + GaussianVelocityLikelihood(galaxy).log_likelihood(
             sigma_los2,
             systemic_velocity_kms=systemic_velocity,
         )
@@ -957,11 +1033,30 @@ def full_log_probability_vector(
         use_mge_physicality_check=use_mge_physicality_check,
         mge_config=mge_config,
     )
-    return prior + log_likelihood_from_unit_sigma(
+    prior_contribution = prior if include_prior_density else 0.0
+    return prior_contribution + log_likelihood_from_unit_sigma(
         galaxy,
         sigma_unit,
         log10_rho0_msun_pc3=float(vector[2]),
         systemic_velocity_kms=float(vector[8]),
+    )
+
+
+def concentration_scatter_prior_distribution(
+    truncation: float = CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
+):
+    """Return the normalized symmetric truncated-Gaussian scatter prior."""
+
+    limit = float(truncation)
+    if not np.isfinite(limit) or limit <= 0.0:
+        raise ValueError("concentration scatter truncation must be positive and finite")
+    lower = (-limit - CONCENTRATION_SCATTER_PRIOR_MEAN) / CONCENTRATION_SCATTER_PRIOR_STD
+    upper = (limit - CONCENTRATION_SCATTER_PRIOR_MEAN) / CONCENTRATION_SCATTER_PRIOR_STD
+    return truncnorm(
+        a=lower,
+        b=upper,
+        loc=CONCENTRATION_SCATTER_PRIOR_MEAN,
+        scale=CONCENTRATION_SCATTER_PRIOR_STD,
     )
 
 
@@ -972,12 +1067,15 @@ def log_prior_vector(
     systemic_velocity_bounds: tuple[float, float],
     halo_model: str = "generalized-hernquist",
     sidm_parameterization: str = "scale",
+    concentration_scatter_truncation: float = CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
 ) -> float:
     if halo_model == "sidm":
         names = SIDM_PARAMETER_NAMES[sidm_parameterization]
         if len(vector) != len(names):
             return -np.inf
         values = dict(zip(names, np.asarray(vector, dtype=float)))
+        if not np.all(np.isfinite(list(values.values()))):
+            return -np.inf
         min_i = np.degrees(np.arccos(galaxy.observables.qprime))
         if not (0.1 <= values["q_halo"] <= 2.0):
             return -np.inf
@@ -999,8 +1097,12 @@ def log_prior_vector(
                 return -np.inf
             if sidm_parameterization == "m200-c200" and not (0.0 <= values["log10_c200"] <= 2.0):
                 return -np.inf
-            if "concentration_scatter_sigma" in values and not (-3.0 <= values["concentration_scatter_sigma"] <= 3.0):
-                return -np.inf
+        if "concentration_scatter_sigma" in values:
+            return float(
+                concentration_scatter_prior_distribution(
+                    concentration_scatter_truncation
+                ).logpdf(values["concentration_scatter_sigma"])
+            )
         return 0.0
 
     if len(vector) != 9:
@@ -1201,6 +1303,7 @@ def run_nautilus(
         args.systemic_velocity_bounds,
         halo_model=args.halo_model,
         sidm_parameterization=args.sidm_parameterization,
+        concentration_scatter_truncation=args.concentration_scatter_truncation,
     )
     likelihood = make_log_probability_callable(galaxy, args)
     filepath = str(checkpoint_output) if checkpoint_output is not None else None
@@ -1263,6 +1366,7 @@ def make_nautilus_prior(
     *,
     halo_model: str = "generalized-hernquist",
     sidm_parameterization: str = "scale",
+    concentration_scatter_truncation: float = CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
 ):
     min_i = float(np.degrees(np.arccos(galaxy.observables.qprime)))
     prior = prior_class()
@@ -1273,14 +1377,19 @@ def make_nautilus_prior(
             "log10_rho_s0_msun_pc3": (-5.0, 5.0),
             "log10_m200_msun": (5.0, 12.0),
             "log10_c200": (0.0, 2.0),
-            "concentration_scatter_sigma": (-3.0, 3.0),
             "tau": (0.0, 1.08),
             "minus_log10_one_minus_beta_z": (-1.0, 1.0),
             "i_deg": (min_i, 90.0),
             "systemic_velocity_kms": systemic_velocity_bounds,
         }
         for name in SIDM_PARAMETER_NAMES[sidm_parameterization]:
-            prior.add_parameter(name, dist=bounds_by_name[name])
+            if name == "concentration_scatter_sigma":
+                distribution = concentration_scatter_prior_distribution(
+                    concentration_scatter_truncation
+                )
+            else:
+                distribution = bounds_by_name[name]
+            prior.add_parameter(name, dist=distribution)
         return prior
 
     bounds = [
@@ -1301,12 +1410,23 @@ def make_nautilus_prior(
 
 def make_log_probability_callable(galaxy: GalaxyData, args: argparse.Namespace):
     def log_probability(vector: np.ndarray) -> float:
-        return evaluate_log_probability(galaxy, np.asarray(vector, dtype=float), args)
+        return evaluate_log_probability(
+            galaxy,
+            np.asarray(vector, dtype=float),
+            args,
+            include_prior_density=False,
+        )
 
     return log_probability
 
 
-def evaluate_log_probability(galaxy: GalaxyData, vector: np.ndarray, args: argparse.Namespace) -> float:
+def evaluate_log_probability(
+    galaxy: GalaxyData,
+    vector: np.ndarray,
+    args: argparse.Namespace,
+    *,
+    include_prior_density: bool = True,
+) -> float:
     return full_log_probability_vector(
         galaxy,
         vector,
@@ -1330,6 +1450,12 @@ def evaluate_log_probability(galaxy: GalaxyData, vector: np.ndarray, args: argpa
         halo_model=args.halo_model,
         sidm_parameterization=args.sidm_parameterization,
         halo_run_context=args.halo_run_context,
+        include_prior_density=include_prior_density,
+        concentration_scatter_truncation=getattr(
+            args,
+            "concentration_scatter_truncation",
+            CONCENTRATION_SCATTER_PRIOR_TRUNCATION,
+        ),
     )
 
 

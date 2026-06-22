@@ -7,7 +7,7 @@ from .data import (
     load_galaxy_data,
     load_low_risk_galaxies,
 )
-from .halos import GeneralizedHernquistHalo, HaloModel, SIDMPSIDM25Halo
+from .halos import GeneralizedHernquistHalo, HaloModel, SIDMPSIDM25Halo, SpheroidallyStratifiedMGEHalo
 from .halo_parameterizations import HaloRunContext, SIDMPhysicalParameters
 from .inference import run_inference, vector_to_hayashi_params
 from .likelihood import GaussianVelocityLikelihood, profile_systemic_velocity
@@ -25,6 +25,7 @@ __all__ = [
     "HaloRunContext",
     "HayashiParameters",
     "SIDMPSIDM25Halo",
+    "SpheroidallyStratifiedMGEHalo",
     "SIDMPhysicalParameters",
     "load_galaxy_data",
     "load_low_risk_galaxies",

@@ -181,6 +181,51 @@ class GeneralizedHernquistHalo(SpheroidallyStratifiedHalo):
         return prefactor * r * int_r, prefactor * z * int_z
 
 
+class SpheroidallyStratifiedMGEHalo(SpheroidallyStratifiedHalo):
+    """Spheroidal halo represented by a signed sum of intrinsic Gaussians."""
+
+    def __init__(
+        self,
+        *,
+        q: float,
+        amplitudes_msun_pc3,
+        sigmas_major_pc,
+        integration_eps: float = 1e-5,
+        force_integral_method: str = "unit_interval",
+        force_quadrature_order: int = 128,
+    ) -> None:
+        self.amplitudes_msun_pc3 = np.asarray(amplitudes_msun_pc3, dtype=float)
+        self.sigmas_major_pc = np.asarray(sigmas_major_pc, dtype=float)
+        if self.amplitudes_msun_pc3.ndim != 1 or self.sigmas_major_pc.ndim != 1:
+            raise ValueError("MGE amplitudes and sigmas must be one-dimensional")
+        if self.amplitudes_msun_pc3.shape != self.sigmas_major_pc.shape:
+            raise ValueError("MGE amplitudes and sigmas must have matching shapes")
+        if self.amplitudes_msun_pc3.size == 0:
+            raise ValueError("MGE halo requires at least one Gaussian")
+        if not np.all(np.isfinite(self.amplitudes_msun_pc3)):
+            raise ValueError("MGE amplitudes must be finite")
+        if not np.all(np.isfinite(self.sigmas_major_pc)) or np.any(self.sigmas_major_pc <= 0.0):
+            raise ValueError("MGE sigmas must be positive and finite")
+        super().__init__(
+            q=q,
+            integration_eps=integration_eps,
+            force_integral_method=force_integral_method,
+            force_quadrature_order=force_quadrature_order,
+        )
+
+    def density_at_ellipsoidal_radius(self, m_pc):
+        radius = np.asarray(m_pc, dtype=float)
+        basis = np.exp(
+            -0.5
+            * (radius[..., None] / self.sigmas_major_pc) ** 2
+        )
+        return basis @ self.amplitudes_msun_pc3
+
+    def unit_density_profile(self, m_pc):
+        # The fitted amplitudes already contain the physical density scale.
+        return self.density_at_ellipsoidal_radius(m_pc)
+
+
 SIDM_TAU_MAX = 1.08
 
 
